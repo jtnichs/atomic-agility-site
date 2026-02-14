@@ -26,7 +26,7 @@ nav a { color:#e0f2fe; margin:0 1rem; text-decoration:none; font-weight:500; }
 .section p { max-width:700px; margin:0 auto 1.5rem; color:#94a3b8; }
 .cards { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; }
 .card { background:#1e293b; padding:2rem; border-radius:1rem; width:250px; }
-footer { background:#0f172a; padding:2rem; text-align:center; font-size:0.9rem; color:#64748b; }
+footer { background:inherit; padding:2rem; text-align:center; font-size:0.9rem; color:#64748b; }
 
 /* =========================
    Metrics + Testimonials
