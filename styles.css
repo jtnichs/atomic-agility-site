@@ -13,3 +13,85 @@ nav a { color:#e0f2fe; margin:0 1rem; text-decoration:none; font-weight:500; }
 .cards { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; }
 .card { background:#1e293b; padding:2rem; border-radius:1rem; width:250px; }
 footer { background:#0f172a; padding:2rem; text-align:center; font-size:0.9rem; color:#64748b; }
+
+/* =========================
+   Metrics + Testimonials
+   ========================= */
+
+.metrics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.metric-card {
+  background-color: #1e293b;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 260px;
+  text-align: left;
+}
+
+.metric-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #38bdf8;
+  line-height: 1.1;
+}
+
+.metric-label {
+  margin-top: 0.5rem;
+  color: #e0f2fe;
+  font-weight: 600;
+}
+
+.metric-sub {
+  margin-top: 0.25rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.quote-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.quote-card {
+  background-color: #1e293b;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  width: 560px;
+  text-align: left;
+}
+
+.quote-text {
+  margin: 0;
+  color: #e0f2fe;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.quote-attrib {
+  margin-top: 1rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.quote-attrib strong {
+  color: #e0f2fe;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid #334155;
+  border-radius: 999px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
