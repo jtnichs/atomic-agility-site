@@ -1,24 +1,28 @@
-# Atomic Agility — GitHub Pages Package
+# Atomic Agility — Multi-page Static Site Package
 
-## Contents
+## Files
 - index.html
+- about.html
+- services.html
+- resources.html
+- contact.html
 - styles.css
-- /assets/favicon.ico
-- /images (empty placeholder)
+- assets/favicon.ico
+- images/ (placeholder)
 
-## How to use (GitHub Desktop)
-1. Open your cloned repo folder in Finder.
-2. Copy **all files and folders** from this package into the repo folder:
-   - index.html
-   - styles.css
-   - assets/
-   - images/
+## Install into your GitHub Pages repo (GitHub Desktop)
+1. Unzip this package.
+2. Copy **all files and folders** into the root of your cloned repo folder.
 3. In GitHub Desktop:
-   - Review changes
-   - Commit message: "Add site files"
-   - Click **Commit to main**
-   - Click **Push origin**
+   - Commit message: "Add multi-page pages"
+   - Commit to main
+   - Push origin
 
-## Notes
-- This is a single-page site with anchor navigation.
-- Update the contact email (mailto) when ready.
+## URLs after deploy
+- Home: https://atomicagility.us/
+- About: https://atomicagility.us/about.html
+- Services: https://atomicagility.us/services.html
+- Resources: https://atomicagility.us/resources.html
+- Contact: https://atomicagility.us/contact.html
+
+Contact email configured: john@atomicagility.us
