@@ -4,7 +4,16 @@ body {
   background: radial-gradient(circle at 50% 20%, #0e2a4a 0%, #061a2f 50%, #041322 100%);
   color: #e0f2fe;
 }
-header { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; background:transparent; border-bottom:1px solid #1e293b; position:sticky; top:0; z-index:1000; }
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 2rem;
+  background: inherit;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 .logo { font-weight:700; font-size:1.5rem; color:#38bdf8; }
 nav a { color:#e0f2fe; margin:0 1rem; text-decoration:none; font-weight:500; }
 .cta-button { background:#38bdf8; color:#0b1120; padding:0.5rem 1rem; border-radius:0.5rem; text-decoration:none; font-weight:bold; display:inline-block; }
