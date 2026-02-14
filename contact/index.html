@@ -24,9 +24,38 @@
 
 <section class="section">
   <h1>Contact</h1>
-  <p>Email: <a href="mailto:john@atomicagility.us" style="color:#38bdf8;text-decoration:none;">john@atomicagility.us</a></p>
-  <p>Schedule a consultation to explore how Atomic Agility can support your organization.</p>
-  <p><strong>Next step:</strong> Send a brief note with your context, goals, and timeline.</p>
+  <p>Send a note with your context, goals, and timeline. I’ll respond within 1–2 business days.</p>
+
+  <form action="https://formspree.io/f/mykdwknk" method="POST" style="max-width:700px;margin:0 auto;text-align:left;">
+
+    <!-- Honeypot spam trap -->
+    <input type="text" name="_gotcha" style="display:none">
+
+    <label>Name</label>
+    <input type="text" name="name" required
+           style="width:100%;padding:0.75rem;margin:0 0 1rem;border-radius:0.5rem;border:1px solid #1e293b;background:#0f172a;color:#e0f2fe;">
+
+    <label>Email</label>
+    <input type="email" name="email" required
+           style="width:100%;padding:0.75rem;margin:0 0 1rem;border-radius:0.5rem;border:1px solid #1e293b;background:#0f172a;color:#e0f2fe;">
+
+    <label>Message</label>
+    <textarea name="message" rows="6" required
+              style="width:100%;padding:0.75rem;margin:0 0 1rem;border-radius:0.5rem;border:1px solid #1e293b;background:#0f172a;color:#e0f2fe;"></textarea>
+
+    <input type="hidden" name="_subject" value="AtomicAgility.us — New Inquiry">
+
+    <button type="submit" class="cta-button" style="border:none;cursor:pointer;">
+      Send Message
+    </button>
+
+    <p style="margin-top:1rem;color:#94a3b8;">
+      Prefer direct email?
+      <a href="mailto:john@atomicagility.us" style="color:#38bdf8;text-decoration:none;">
+        john@atomicagility.us
+      </a>
+    </p>
+  </form>
 </section>
 
 <footer>
