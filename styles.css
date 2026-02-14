@@ -115,3 +115,22 @@ footer {
   font-size: 0.85rem;
   margin-left: 0.5rem;
 }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 34px;
+  width: auto;
+  display: block;
+  border-radius: 6px; /* softens square background */
+}
+
+.brand-text {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #38bdf8;
+}
