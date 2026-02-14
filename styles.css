@@ -123,10 +123,9 @@ footer {
 }
 
 .brand-logo {
-  height: 34px;
+  height: 36px;
   width: auto;
   display: block;
-  border-radius: 6px; /* softens square background */
 }
 
 .brand-text {
