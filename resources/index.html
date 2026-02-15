@@ -11,18 +11,41 @@
 </head>
 <body>
 <header>
-<a href="/" class="brand">
-  <!-- <img src="/assets/logo.svg" alt="Atomic Agility logo" class="brand-logo"> -->
-  <span class="brand-text">Atomic Agility</span>
-</a>
-  <nav>
+  <!-- Brand (left) -->
+  <a href="/" class="brand">
+    <!-- If you're temporarily commenting out the logo, keep it commented -->
+    <!-- <img src="/assets/logo.svg" alt="Atomic Agility logo" class="brand-logo"> -->
+    <span class="brand-text">Atomic Agility</span>
+  </a>
+
+  <!-- Desktop nav -->
+  <nav class="nav-desktop" aria-label="Primary">
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <a href="/services/">Services</a>
     <a href="/resources/">Resources</a>
     <a href="/contact/">Contact</a>
   </nav>
-  <a href="/contact/" class="cta-button">Book a Free Consultation</a>
+
+  <!-- Desktop CTA -->
+  <a href="/contact/" class="cta-button cta-desktop">Book a Free Consultation</a>
+
+  <!-- Hamburger button (mobile only) -->
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+
+  <!-- Mobile menu panel -->
+  <div id="mobileMenu" class="mobile-menu" aria-label="Mobile menu">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/services/">Services</a>
+    <a href="/resources/">Resources</a>
+    <a href="/contact/">Contact</a>
+    <a href="/contact/" class="cta-button mobile-cta">Book a Free Consultation</a>
+  </div>
 </header>
 
 <section class="section">
@@ -48,5 +71,6 @@
 <footer>
   <p>&copy; 2026 Atomic Agility. All rights reserved.</p>
 </footer>
+<script src="/assets/site.js"></script>
 </body>
 </html>
