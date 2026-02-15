@@ -6,14 +6,20 @@ body {
 }
 
 header {
-  background: transparent;
-  transition: background 200ms ease, border-color 200ms ease;
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
-header.scrolled {
-  background: rgba(4, 19, 34, 0.60);
+  /* prevents content showing through */
+  background: rgba(4, 19, 34, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
+  /* subtle separation */
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
