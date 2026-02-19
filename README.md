@@ -1,29 +1,37 @@
-# Atomic Agility — Clean URL Package (folder-based)
+# Atomic Agility Website
+
+Static marketing site for Atomic Agility, built with folder-based routes suitable for GitHub Pages.
 
 ## Structure
-- index.html
-- styles.css
-- assets/favicon.ico
-- images/ (placeholder)
-- about/index.html
-- services/index.html
-- resources/index.html
-- contact/index.html
+- `index.html`
+- `styles.css`
+- `assets/site.js`
+- `assets/favicon.ico`
+- `assets/logo.png`
+- `about/index.html`
+- `services/index.html`
+- `resources/index.html`
+- `contact/index.html`
+- `CNAME`
 
-## Install into your GitHub Pages repo (GitHub Desktop)
-1. Unzip this package.
-2. Copy **all files and folders** into the root of your cloned repo folder.
-   - When prompted, replace existing files.
-3. In GitHub Desktop:
-   - Commit message: "Switch to clean URLs"
-   - Commit to main
-   - Push origin
+## Local preview
+Because this site uses clean folder URLs, preview it with a local static server from the repo root.
 
-## URLs after deploy
-- Home: https://atomicagility.us/
-- About: https://atomicagility.us/about/
-- Services: https://atomicagility.us/services/
-- Resources: https://atomicagility.us/resources/
-- Contact: https://atomicagility.us/contact/
+Example:
 
-Contact email configured: john@atomicagility.us
+```bash
+python3 -m http.server 8080
+```
+
+Then open:
+- <http://localhost:8080/>
+- <http://localhost:8080/about/>
+- <http://localhost:8080/services/>
+- <http://localhost:8080/resources/>
+- <http://localhost:8080/contact/>
+
+## Deployment notes
+- This repository is configured for custom-domain GitHub Pages deployment via `CNAME`.
+- Contact form submissions are handled by Formspree from `contact/index.html`.
+
+Contact email configured: `john@atomicagility.us`
