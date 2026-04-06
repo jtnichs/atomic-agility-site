@@ -118,7 +118,7 @@ export default function About() {
             <div className="flex justify-center md:justify-start">
               <Image
                 src="/headshot.jpg"
-                alt="John Nichs, Founder of Atomic Agility"
+                alt="John Nichols, Founder of Atomic Agility"
                 width={400}
                 height={500}
                 className="rounded-2xl border-2 border-[#00487B] object-cover"
@@ -132,13 +132,13 @@ export default function About() {
                   Our Founder
                 </p>
                 <h2 className="mt-2 text-4xl font-bold text-white">
-                  John Nichs
+                  John Nichols
                 </h2>
               </div>
 
               <div className="space-y-5 text-lg leading-relaxed text-muted">
                 <p>
-                  John Nichs is an agile coach and consultant with 15 years of
+                  John Nichols is an agile coach and consultant with 15 years of
                   experience helping teams and organizations build real,
                   sustainable agility. His work spans federal government,
                   enterprise, and high-growth organizations.
