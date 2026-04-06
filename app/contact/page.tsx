@@ -288,13 +288,13 @@ export default function Contact() {
                   <span>john@atomicagility.us</span>
                 </a>
                 <a
-                  href="https://linkedin.com/in/jtnichs"
+                  href="https://www.linkedin.com/in/john-tyler-nichols/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-muted hover:text-white transition-colors duration-200"
                 >
                   <LinkedInIcon />
-                  <span>linkedin.com/in/jtnichs</span>
+                  <span>linkedin.com/in/john-tyler-nichols</span>
                 </a>
                 <div className="flex items-center gap-3 text-muted">
                   <LocationIcon />
@@ -331,7 +331,7 @@ export default function Contact() {
         <div className="mx-auto max-w-7xl flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:justify-center">
           <p className="text-lg text-muted">Prefer to connect directly?</p>
           <a
-            href="https://linkedin.com/in/jtnichs"
+            href="https://www.linkedin.com/in/john-tyler-nichols/"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg border border-cyan px-8 py-3 font-semibold text-cyan transition-colors duration-200 hover:bg-cyan hover:text-white"

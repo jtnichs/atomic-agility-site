@@ -160,7 +160,7 @@ export default function About() {
               </div>
 
               <a
-                href="https://linkedin.com/in/jtnichs"
+                href="https://www.linkedin.com/in/john-tyler-nichols/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block text-cyan hover:underline"
