@@ -1,0 +1,277 @@
+import Link from "next/link";
+
+// --- Icons ---
+
+function CoachingIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-12 w-12 text-cyan"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17 20h5v-1a4 4 0 00-5.916-3.52M9 20H4v-1a4 4 0 015.916-3.52M15 7a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0zm-18 0a3 3 0 116 0 3 3 0 01-6 0z"
+      />
+    </svg>
+  );
+}
+
+function TrainingIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-12 w-12 text-cyan"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.966 8.966 0 00-6 2.292m0-14.25v14.25"
+      />
+    </svg>
+  );
+}
+
+function TransformIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-12 w-12 text-cyan"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
+      />
+    </svg>
+  );
+}
+
+// --- Data ---
+
+const agencies = [
+  "U.S. Census Bureau",
+  "Federal Reserve",
+  "Dept. of Commerce",
+  "Dept. of Justice",
+  "OMB",
+];
+
+// --- Page ---
+
+export default function Services() {
+  return (
+    <>
+      {/* SECTION 1 — PAGE HERO */}
+      <section className="relative flex flex-col items-center justify-center bg-navy px-4 py-32 text-center">
+        <h1 className="text-5xl font-bold text-white md:text-7xl">
+          Our Services
+        </h1>
+        <p className="mt-4 text-2xl font-medium text-cyan md:text-3xl">
+          Coaching, Training, and Transformation for the AI Age.
+        </p>
+        <p className="mt-4 max-w-2xl text-lg text-muted">
+          We meet you where you are and build toward where you need to go.
+        </p>
+      </section>
+
+      {/* SECTION 2 — SERVICE 1: AGILE COACHING */}
+      <section className="w-full bg-navyMid py-24 px-4">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:items-start">
+            {/* Left — identity */}
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <CoachingIcon />
+                <h2 className="text-4xl font-bold text-white">Agile Coaching</h2>
+              </div>
+              <p className="text-lg leading-relaxed text-muted">
+                Whether you&apos;re just starting your agile journey or trying
+                to break through a plateau, our coaching goes beyond frameworks.
+                We embed with your teams, identify what&apos;s actually blocking
+                progress, and build the habits that make agility stick.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-2 inline-block self-start rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
+              >
+                Schedule a Coaching Consultation
+              </Link>
+            </div>
+
+            {/* Right — details */}
+            <div className="rounded-xl border border-[#00487B] bg-navy p-8">
+              <p className="text-sm uppercase tracking-widest text-cyan">
+                Who It&apos;s For
+              </p>
+              <ul className="mt-6 space-y-4">
+                {[
+                  "Teams adopting agile for the first time",
+                  "Organizations struggling with inconsistent agile practices",
+                  "Leaders who want to build a coaching culture internally",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-cyan" />
+                    <span className="text-muted leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 — SERVICE 2: TRAINING & WORKSHOPS */}
+      <section className="w-full bg-navy py-24 px-4">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:items-start">
+            {/* Left — details (reversed order on desktop) */}
+            <div className="rounded-xl border border-[#00487B] bg-navyMid p-8 md:order-first">
+              <p className="text-sm uppercase tracking-widest text-cyan">
+                What&apos;s Included
+              </p>
+              <ul className="mt-6 space-y-4">
+                {[
+                  "SAFe Agilist (SA) Certification",
+                  "SAFe Scrum Master (SSM) Certification",
+                  "Custom Agile Workshops",
+                  "AI & Agile Integration Workshops",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-cyan" />
+                    <span className="text-muted leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right — identity */}
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <TrainingIcon />
+                <h2 className="text-4xl font-bold text-white">
+                  Training &amp; Workshops
+                </h2>
+              </div>
+              <p className="text-lg leading-relaxed text-muted">
+                Our training programs are built for how modern organizations
+                actually learn — practical, scenario-based, and immediately
+                applicable. We offer SAFe certification training and custom
+                workshops tailored to your team&apos;s specific context.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-2 inline-block self-start rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
+              >
+                View Upcoming Training
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — SERVICE 3: ENTERPRISE TRANSFORMATION */}
+      <section className="w-full bg-navyMid py-24 px-4">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:items-start">
+            {/* Left — identity */}
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <TransformIcon />
+                <h2 className="text-4xl font-bold text-white">
+                  Enterprise Transformation
+                </h2>
+              </div>
+              <p className="text-lg leading-relaxed text-muted">
+                Large-scale agile transformation requires more than a framework
+                rollout. We work at the strategic level — aligning leadership,
+                restructuring delivery, and building the operating model that
+                lets agility scale across your entire organization.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-2 inline-block self-start rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
+              >
+                Talk to Us About Transformation
+              </Link>
+            </div>
+
+            {/* Right — details */}
+            <div className="rounded-xl border border-[#00487B] bg-navy p-8">
+              <p className="text-sm uppercase tracking-widest text-cyan">
+                Who It&apos;s For
+              </p>
+              <ul className="mt-6 space-y-4">
+                {[
+                  "Enterprises beginning a SAFe or LeSS transformation",
+                  "Organizations that have tried agile transformation and stalled",
+                  "Government agencies modernizing their delivery model",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-cyan" />
+                    <span className="text-muted leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5 — CREDENTIALS STRIP */}
+      <section className="w-full bg-navy py-12 px-4">
+        <div className="mx-auto max-w-7xl text-center">
+          <p className="text-sm uppercase tracking-widest text-muted">
+            Trusted by Leading Federal Agencies
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
+            {agencies.map((agency) => (
+              <span
+                key={agency}
+                className="rounded-lg border border-[#00487B] bg-navyMid px-6 py-3 text-lg font-medium text-white"
+              >
+                {agency}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6 — BOTTOM CTA BANNER */}
+      <section className="w-full bg-gradient-to-b from-navy to-navyMid py-24 px-4">
+        <div className="mx-auto max-w-7xl text-center">
+          <h2 className="text-4xl font-bold text-white">
+            Not Sure Where to Start?
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+            Every engagement begins with a conversation. Let&apos;s talk about
+            your organization and figure out the right fit.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/contact"
+              className="rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
+            >
+              Book a Free Consultation
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
