@@ -17,14 +17,12 @@ interface Instructor {
 
 interface Schedule {
   id: string;
-  course_id: string;
   start_date: string;
   end_date: string;
-  start_time: string | null;
-  end_time: string | null;
+  delivery_mode: string | null;
+  location: string | null;
   max_seats: number | null;
   price_cents: number | null;
-  delivery_mode: string | null;
   instructors: Instructor | Instructor[] | null;
 }
 
@@ -33,8 +31,8 @@ interface Course {
   title: string;
   slug: string;
   description: string | null;
+  duration_days: number | null;
   price_cents: number;
-  is_published: boolean;
 }
 
 // --- Helpers ---
@@ -51,12 +49,6 @@ function formatDateRange(start: string, end: string): string {
   }
   const opts: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", year: "numeric" };
   return `${s.toLocaleDateString("en-US", opts)} – ${e.toLocaleDateString("en-US", opts)}`;
-}
-
-function formatTime(start: string | null, end: string | null): string {
-  if (!start) return "9:00 AM – 5:00 PM ET";
-  if (!end) return `${start} ET`;
-  return `${start} – ${end} ET`;
 }
 
 // --- Icons ---
@@ -149,9 +141,7 @@ function ScheduleCard({
       {/* Time */}
       <div className="mt-3 flex items-center gap-2">
         <ClockIcon />
-        <span className="text-muted">
-          {formatTime(schedule.start_time, schedule.end_time)}
-        </span>
+        <span className="text-muted">9:00 AM – 5:00 PM ET</span>
       </div>
 
       {/* Seats */}
@@ -206,9 +196,8 @@ export default async function CoursePage({
   // Fetch course
   const { data: course, error: courseError } = await supabase
     .from("courses")
-    .select("id, title, slug, description, price_cents, is_published")
+    .select("id, title, slug, description, duration_days, price_cents")
     .eq("slug", params.slug)
-    .eq("is_published", true)
     .single();
 
   if (courseError || !course) {
@@ -218,19 +207,16 @@ export default async function CoursePage({
   const typedCourse = course as Course;
 
   // Fetch upcoming schedules with instructor
-  const today = new Date().toISOString().split("T")[0];
   const { data: schedules } = await supabase
     .from("schedules")
     .select(`
       id,
-      course_id,
       start_date,
       end_date,
-      start_time,
-      end_time,
+      delivery_mode,
+      location,
       max_seats,
       price_cents,
-      delivery_mode,
       instructors (
         id,
         name,
@@ -240,7 +226,7 @@ export default async function CoursePage({
       )
     `)
     .eq("course_id", typedCourse.id)
-    .gte("start_date", today)
+    .gte("start_date", new Date().toISOString().split("T")[0])
     .order("start_date", { ascending: true });
 
   const typedSchedules = (schedules ?? []) as Schedule[];
