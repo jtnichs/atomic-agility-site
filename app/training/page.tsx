@@ -5,18 +5,6 @@ export const dynamic = "force-dynamic";
 
 // --- Types ---
 
-interface Schedule {
-  id: string;
-  course_id: string;
-  start_date: string;
-  end_date: string;
-  start_time: string | null;
-  end_time: string | null;
-  max_seats: number | null;
-  price_cents: number | null;
-  delivery_mode: string | null;
-}
-
 interface Course {
   id: string;
   title: string;
@@ -24,7 +12,17 @@ interface Course {
   description: string | null;
   price_cents: number;
   is_published: boolean;
-  schedules: Schedule[];
+}
+
+interface Schedule {
+  id: string;
+  start_date: string;
+  end_date: string;
+  delivery_mode: string | null;
+  location: string | null;
+  max_seats: number | null;
+  price_cents: number | null;
+  courses: Course | Course[];
 }
 
 // --- Helpers ---
@@ -36,18 +34,11 @@ function formatPrice(cents: number): string {
 function formatDateRange(start: string, end: string): string {
   const s = new Date(start);
   const e = new Date(end);
-  const opts: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", year: "numeric" };
   if (s.getFullYear() === e.getFullYear() && s.getMonth() === e.getMonth()) {
-    // Same month: "May 6–7, 2026"
     return `${s.toLocaleDateString("en-US", { month: "long", day: "numeric" })}–${e.getDate()}, ${e.getFullYear()}`;
   }
+  const opts: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", year: "numeric" };
   return `${s.toLocaleDateString("en-US", opts)} – ${e.toLocaleDateString("en-US", opts)}`;
-}
-
-function formatTime(start: string | null, end: string | null): string {
-  if (!start) return "9:00 AM – 5:00 PM ET";
-  if (!end) return `${start} ET`;
-  return `${start} – ${end} ET`;
 }
 
 // --- Icons ---
@@ -56,14 +47,6 @@ function CalendarIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-cyan flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-    </svg>
-  );
-}
-
-function ClockIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-muted flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
   );
 }
@@ -119,11 +102,16 @@ const features = [
 
 // --- Schedule Card ---
 
-function ScheduleCard({ schedule, course }: { schedule: Schedule; course: Course }) {
+type NormalizedSchedule = Omit<Schedule, "courses"> & { courses: Course };
+
+function ScheduleCard({ schedule }: { schedule: NormalizedSchedule }) {
+  const course = schedule.courses;
   const schedulePriceCents = schedule.price_cents;
   const coursePriceCents = course.price_cents;
-  const isDiscounted = schedulePriceCents !== null && schedulePriceCents < coursePriceCents;
-  const displayPrice = schedulePriceCents !== null ? schedulePriceCents : coursePriceCents;
+  const isDiscounted =
+    schedulePriceCents !== null && schedulePriceCents < coursePriceCents;
+  const displayPrice =
+    schedulePriceCents !== null ? schedulePriceCents : coursePriceCents;
 
   return (
     <div className="group rounded-xl border border-[#00487B] bg-navy p-8 flex flex-col transition-colors duration-200 hover:border-cyan">
@@ -140,14 +128,6 @@ function ScheduleCard({ schedule, course }: { schedule: Schedule; course: Course
         <CalendarIcon />
         <span className="text-lg text-white">
           {formatDateRange(schedule.start_date, schedule.end_date)}
-        </span>
-      </div>
-
-      {/* Time */}
-      <div className="mt-2 flex items-center gap-2">
-        <ClockIcon />
-        <span className="text-muted">
-          {formatTime(schedule.start_time, schedule.end_time)}
         </span>
       </div>
 
@@ -170,11 +150,15 @@ function ScheduleCard({ schedule, course }: { schedule: Schedule; course: Course
               {formatPrice(displayPrice)}
             </p>
             <p className="mt-1 text-sm text-muted">
-              <span className="line-through">Regular price {formatPrice(coursePriceCents)}</span>
+              <span className="line-through">
+                Regular price {formatPrice(coursePriceCents)}
+              </span>
             </p>
           </>
         ) : (
-          <p className="text-3xl font-bold text-cyan">{formatPrice(displayPrice)}</p>
+          <p className="text-3xl font-bold text-cyan">
+            {formatPrice(displayPrice)}
+          </p>
         )}
       </div>
 
@@ -192,49 +176,44 @@ function ScheduleCard({ schedule, course }: { schedule: Schedule; course: Course
 // --- Page ---
 
 export default async function TrainingPage() {
-  const { data: courses, error } = await supabase
-    .from("courses")
+  const today = new Date().toISOString().split("T")[0];
+
+  const { data: schedules, error } = await supabase
+    .from("schedules")
     .select(`
       id,
-      title,
-      slug,
-      description,
+      start_date,
+      end_date,
+      delivery_mode,
+      location,
+      max_seats,
       price_cents,
-      is_published,
-      schedules (
+      courses (
         id,
-        course_id,
-        start_date,
-        end_date,
-        start_time,
-        end_time,
-        max_seats,
+        title,
+        slug,
+        description,
         price_cents,
-        delivery_mode
+        is_published
       )
     `)
-    .eq("is_published", true);
+    .gte("start_date", today)
+    .eq("courses.is_published", true)
+    .order("start_date", { ascending: true });
 
-  if (error) {
-    console.error("Supabase error:", error.message);
-  }
+  console.log("Training page — schedules:", JSON.stringify(schedules, null, 2));
+  console.log("Training page — error:", error);
 
-  // Flatten courses → schedules, sorted by start_date
-  type ScheduleWithCourse = { schedule: Schedule; course: Course };
-  const scheduleRows: ScheduleWithCourse[] = [];
+  // Normalize: Supabase may return courses as an array or object; flatten to single Course
+  type NormalizedSchedule = Omit<Schedule, "courses"> & { courses: Course };
 
-  if (courses) {
-    for (const course of courses as Course[]) {
-      for (const schedule of course.schedules ?? []) {
-        scheduleRows.push({ schedule, course });
-      }
-    }
-    scheduleRows.sort(
-      (a, b) =>
-        new Date(a.schedule.start_date).getTime() -
-        new Date(b.schedule.start_date).getTime()
-    );
-  }
+  const validSchedules: NormalizedSchedule[] = (schedules ?? [])
+    .filter((s) => s.courses !== null && s.courses !== undefined)
+    .map((s) => ({
+      ...s,
+      courses: Array.isArray(s.courses) ? s.courses[0] : (s.courses as Course),
+    }))
+    .filter((s) => s.courses !== undefined) as NormalizedSchedule[];
 
   return (
     <>
@@ -284,14 +263,10 @@ export default async function TrainingPage() {
             </h2>
           </div>
 
-          {scheduleRows.length > 0 ? (
+          {validSchedules.length > 0 ? (
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {scheduleRows.map(({ schedule, course }) => (
-                <ScheduleCard
-                  key={schedule.id}
-                  schedule={schedule}
-                  course={course}
-                />
+              {validSchedules.map((schedule) => (
+                <ScheduleCard key={schedule.id} schedule={schedule} />
               ))}
             </div>
           ) : (
