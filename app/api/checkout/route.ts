@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { supabase } from "@/lib/supabase";
+import supabaseAdmin from "@/lib/supabase-admin";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     }
 
     // --- 1. Fetch schedule + course from Supabase ---
-    const { data: scheduleRaw, error: scheduleError } = await supabase
+    const { data: scheduleRaw, error: scheduleError } = await supabaseAdmin
       .from("schedules")
       .select("id, price_cents, start_date, end_date, courses(id, title, slug, price_cents)")
       .eq("id", scheduleId)
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
     const unitAmount = schedule.price_cents ?? course.price_cents;
 
     // --- 2. Insert pending registration ---
-    const { data: registration, error: regError } = await supabase
+    const { data: registration, error: regError } = await supabaseAdmin
       .from("registrations")
       .insert({
         schedule_id: scheduleId,
