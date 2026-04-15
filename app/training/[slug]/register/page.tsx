@@ -172,7 +172,11 @@ export default function RegisterPage() {
       const json = await res.json();
 
       if (!res.ok || !json.url) {
-        setError(json.error ?? "Something went wrong. Please try again.");
+        // Surface full error details from the API for debugging
+        const detail = json.details
+          ? ` — ${JSON.stringify(json.details)}`
+          : "";
+        setError(`${json.error ?? "Something went wrong. Please try again."}${detail}`);
         setSubmitting(false);
         return;
       }

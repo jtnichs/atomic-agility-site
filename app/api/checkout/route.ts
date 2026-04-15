@@ -64,6 +64,9 @@ export async function POST(request: NextRequest) {
       hearAboutUs?: string;
     };
 
+    console.log("Checkout route hit");
+    console.log("Request body:", { scheduleId, firstName, lastName, email, organization, jobTitle });
+
     // --- Validate required fields ---
     if (!scheduleId || !firstName || !lastName || !email || !organization || !jobTitle) {
       return NextResponse.json(
@@ -79,11 +82,12 @@ export async function POST(request: NextRequest) {
       .eq("id", scheduleId)
       .single();
 
+    console.log("Schedule fetch result:", { data: scheduleRaw, error: scheduleError });
+
     if (scheduleError || !scheduleRaw) {
-      console.error("Schedule fetch error:", scheduleError);
       return NextResponse.json(
-        { error: "Schedule not found." },
-        { status: 404 }
+        { error: "Schedule fetch failed", details: scheduleError },
+        { status: 400 }
       );
     }
 
@@ -93,7 +97,7 @@ export async function POST(request: NextRequest) {
     const unitAmount = schedule.price_cents ?? course.price_cents;
 
     // --- 2. Insert pending registration ---
-    const { data: registration, error: regError } = await supabaseAdmin
+    const { data: registration, error: registrationError } = await supabaseAdmin
       .from("registrations")
       .insert({
         schedule_id: scheduleId,
@@ -109,11 +113,12 @@ export async function POST(request: NextRequest) {
       .select("id")
       .single();
 
-    if (regError || !registration) {
-      console.error("Registration insert error:", regError);
+    console.log("Registration insert result:", { data: registration, error: registrationError });
+
+    if (registrationError || !registration) {
       return NextResponse.json(
-        { error: "Could not create registration. Please try again." },
-        { status: 500 }
+        { error: "Registration insert failed", details: registrationError },
+        { status: 400 }
       );
     }
 
@@ -156,12 +161,16 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    console.log("Stripe session result:", { url: session.url });
+
     // --- 4. Return Stripe checkout URL ---
     return NextResponse.json({ url: session.url });
-  } catch (err) {
-    console.error("Checkout error:", err);
+
+  } catch (error: unknown) {
+    const err = error as { message?: string; stack?: string };
+    console.error("Checkout route error:", error);
     return NextResponse.json(
-      { error: "Internal server error. Please try again." },
+      { error: err.message ?? "Unknown error", stack: err.stack },
       { status: 500 }
     );
   }
