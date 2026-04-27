@@ -14,7 +14,6 @@ export default function TestimonialCarousel() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const total = testimonials.length;
-  const maxIndex = total - visibleCount;
 
   // Responsive visible count
   useEffect(() => {
