@@ -6,52 +6,51 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "John doesn't just teach SAFe — he makes it real. Every example was drawn from something I'd actually experienced on the job. I walked out with a plan, not just a certificate.",
-    attribution: "Program Manager, U.S. Census Bureau",
+      "John brought something into our team that technical work alone couldn't deliver — a real increase in agile maturity. The impact was equal to, if not greater than, everything else we accomplished.",
+    attribution: "Senior Manager, Federal Reserve Bank",
   },
   {
     quote:
-      "Most SAFe courses feel like you're memorizing a glossary. This was the opposite. John pushed us to think critically about when and why frameworks work — and when they don't.",
-    attribution: "Scrum Master, Federal Reserve Board",
+      "It was clear that John had not only the breadth of knowledge to teach the course, but also the depth on several topics. That combination made a real difference.",
+    attribution: "Leading SAFe Graduate",
   },
   {
     quote:
-      "I've attended three SAFe trainings over the years. This was the first one where I felt like the instructor actually understood what federal agencies deal with. That context made everything click.",
-    attribution: "IT Project Manager, Dept. of Commerce",
+      "I am easily able to put this class in the top echelon of training I've attended over the course of my career.",
+    attribution: "Leading SAFe Graduate",
   },
   {
     quote:
-      "The AI integration piece was something I didn't expect and couldn't stop thinking about afterward. It reframed how I'm approaching our team's tooling conversations entirely.",
-    attribution: "Product Owner, Department of Justice",
+      "I had no prior background in SAFe — going in was daunting. Everything was taught in a way that was easily understandable and made me feel well prepared.",
+    attribution: "SAFe SSM Graduate",
   },
   {
     quote:
-      "John is the rare trainer who can hold a room of skeptical government contractors and get them genuinely engaged. The two days flew by.",
-    attribution: "Agile Coach, Federal Consulting Firm",
+      "Very engaging instructor — which is a feat, because he's teaching material that gets a bit repetitive. John made it work.",
+    attribution: "SAFe SSM Graduate",
   },
   {
     quote:
-      "I came in thinking I knew agile. I left realizing I knew the vocabulary but not the mindset. The distinction John draws between compliance and real agility is something I'm still unpacking.",
-    attribution: "Engineering Lead, Defense Contractor",
+      "John's use of Miro put all the learning materials, hands-on examples, and group exercises in one place. I felt well prepared for the exam — and I could find everything I needed after class too.",
+    attribution: "SAFe POPM Graduate",
   },
   {
     quote:
-      "The post-class coaching hours are worth the price of admission alone. Having somewhere to bring real implementation problems — not hypotheticals — made the training stick.",
-    attribution: "Release Train Engineer, OMB",
+      "John created a space that felt welcoming and safe to learn in. His clarity and warmth made a real difference in how confidently I engaged with the content. I will highly endorse classes led by John.",
+    attribution: "Leading SAFe Graduate",
+  },
+  {
+    quote: "For a two-day course, I almost wish it went on for a third.",
+    attribution: "SAFe POPM Graduate",
   },
   {
     quote:
-      "Our whole team took this together and it changed how we talk to each other about our work. We have a shared language now, and more importantly, a shared set of questions.",
-    attribution: "Delivery Lead, State Government Agency",
+      "John was the best trainer/facilitator I have ever taken a class from. He made the class interesting and enjoyable — I will definitely take another class with John in the future.",
+    attribution: "SAFe SSM Graduate",
   },
   {
     quote:
-      "I was nervous about the exam, but John's framing of the material made it feel natural. Passed on the first try, and more importantly, I actually use what I learned.",
-    attribution: "Business Analyst, Healthcare IT",
-  },
-  {
-    quote:
-      "What sets this training apart is how John balances theory with honesty. He'll tell you when a practice works and when it's theater. That candor is rare in this space.",
-    attribution: "Agile Program Director, Technology Services Firm",
+      "Starting with a storytelling mindset, John took us on a journey through product management and covered everything clearly. I came away with a very good understanding of the SAFe framework.",
+    attribution: "SAFe POPM Graduate",
   },
 ];
