@@ -37,7 +37,7 @@ export async function sendRegistrationConfirmation({
     <div style="padding:40px 32px;">
 
       <!-- Greeting -->
-      <h2 style="color:#ffffff; font-size:24px; margin:0 0 8px;">You're Registered! </h2>
+      <h2 style="color:#ffffff; font-size:24px; margin:0 0 8px;">You're Registered! 🎉</h2>
       <p style="color:#94a3b8; font-size:16px; margin:0 0 32px;">Hi ${firstName}, your registration is confirmed. Here are your details:</p>
 
       <!-- Course details box -->
@@ -46,11 +46,11 @@ export async function sendRegistrationConfirmation({
         <table style="width:100%; border-collapse:collapse;">
           <tr>
             <td style="color:#94a3b8; font-size:14px; padding:6px 0; width:40%;">Dates</td>
-            <td style="color:#ffffff; font-size:14px; padding:6px 0;">${startDate}  ${endDate}</td>
+            <td style="color:#ffffff; font-size:14px; padding:6px 0;">${startDate} – ${endDate}</td>
           </tr>
           <tr>
             <td style="color:#94a3b8; font-size:14px; padding:6px 0;">Time</td>
-            <td style="color:#ffffff; font-size:14px; padding:6px 0;">9:00 AM  5:00 PM ET (both days)</td>
+            <td style="color:#ffffff; font-size:14px; padding:6px 0;">9:00 AM – 5:00 PM ET (both days)</td>
           </tr>
           <tr>
             <td style="color:#94a3b8; font-size:14px; padding:6px 0;">Format</td>
@@ -95,7 +95,7 @@ export async function sendRegistrationConfirmation({
 
     <!-- Footer -->
     <div style="background-color:#000E22; padding:24px 32px; text-align:center; border-top:1px solid #00487B;">
-      <p style="color:#94a3b8; font-size:12px; margin:0;"> 2026 Atomic Agility LLC. All rights reserved.</p>
+      <p style="color:#94a3b8; font-size:12px; margin:0;">© 2026 Atomic Agility LLC. All rights reserved.</p>
       <p style="color:#94a3b8; font-size:12px; margin:8px 0 0;">Washington, D.C. Metro Area</p>
     </div>
 
@@ -106,7 +106,7 @@ export async function sendRegistrationConfirmation({
   return resend.emails.send({
     from: "Atomic Agility <john@atomicagility.us>",
     to,
-    subject: `You're registered! ${courseTitle}  ${startDate}`,
+    subject: `You're registered! ${courseTitle} — ${startDate}`,
     html,
   });
 }

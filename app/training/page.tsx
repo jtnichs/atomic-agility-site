@@ -2,6 +2,8 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
 
 // --- Types ---
 
@@ -200,7 +202,8 @@ export default async function TrainingPage() {
     .gte("start_date", today)
     .order("start_date", { ascending: true });
 
-  console.log("Training page — schedules:", JSON.stringify(schedules, null, 2));
+  console.log("Raw schedules from Supabase:", JSON.stringify(schedules, null, 2));
+  console.log("Schedule count:", schedules?.length);
   console.log("Training page — error:", error);
 
   // Normalize: Supabase may return courses as an array or object; flatten to single Course
