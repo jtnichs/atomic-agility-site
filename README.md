@@ -28,3 +28,4 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 STRIPE_SECRET_KEY=your-stripe-secret-key
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your-stripe-publishable-key
 ```
+
