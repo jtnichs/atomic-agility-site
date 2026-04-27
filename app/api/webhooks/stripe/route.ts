@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { headers } from "next/headers";
 import supabaseAdmin from "@/lib/supabase-admin";
+import { sendRegistrationConfirmation } from "@/lib/email";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
-// App Router: disable body parsing by reading raw text
+// App Router: read raw body, no body parser
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
@@ -46,10 +47,11 @@ export async function POST(request: NextRequest) {
 
       if (!registrationId) {
         console.error("No registrationId in session metadata:", session.id);
-        // Return 200 so Stripe doesn't retry — this is a data issue, not a server error
+        // Return 200 so Stripe doesn't retry — data issue, not a server error
         return NextResponse.json({ received: true });
       }
 
+      // --- Update registration to confirmed ---
       const { error: updateError } = await supabaseAdmin
         .from("registrations")
         .update({
@@ -67,12 +69,78 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      console.log(
-        `Registration ${registrationId} confirmed (session: ${session.id})`
+      console.log(`Registration ${registrationId} confirmed (session: ${session.id})`);
+
+      // --- Fetch full registration details for confirmation email ---
+      const { data: registration, error: fetchError } = await supabaseAdmin
+        .from("registrations")
+        .select(`
+          id,
+          first_name,
+          last_name,
+          email,
+          amount_paid_cents,
+          schedules (
+            start_date,
+            end_date,
+            courses (
+              title
+            )
+          )
+        `)
+        .eq("id", registrationId)
+        .single();
+
+      if (fetchError || !registration) {
+        console.error("Could not fetch registration for email:", fetchError);
+        // Don't fail the webhook — registration is already confirmed
+        return NextResponse.json({ received: true });
+      }
+
+      // Normalize nested joins (Supabase may return arrays)
+      const scheduleRaw = Array.isArray(registration.schedules)
+        ? registration.schedules[0]
+        : registration.schedules;
+
+      const courseRaw = Array.isArray(scheduleRaw?.courses)
+        ? scheduleRaw.courses[0]
+        : scheduleRaw?.courses;
+
+      if (!scheduleRaw || !courseRaw) {
+        console.error("Missing schedule/course data for email, registration:", registrationId);
+        return NextResponse.json({ received: true });
+      }
+
+      // Format dates with T12:00:00 to avoid timezone-shift issues
+      const startDate = new Date(`${scheduleRaw.start_date}T12:00:00`).toLocaleDateString(
+        "en-US",
+        { month: "long", day: "numeric", year: "numeric" }
       );
+      const endDate = new Date(`${scheduleRaw.end_date}T12:00:00`).toLocaleDateString(
+        "en-US",
+        { month: "long", day: "numeric", year: "numeric" }
+      );
+
+      // --- Send confirmation email ---
+      try {
+        await sendRegistrationConfirmation({
+          to: registration.email,
+          firstName: registration.first_name,
+          lastName: registration.last_name,
+          courseTitle: courseRaw.title,
+          startDate,
+          endDate,
+          amountPaid: registration.amount_paid_cents / 100,
+          registrationId: registration.id,
+        });
+        console.log("Confirmation email sent to:", registration.email);
+      } catch (emailError) {
+        console.error("Email send failed:", emailError);
+        // Don't throw — webhook must still return 200
+      }
     }
 
-    // --- 4. Return 200 for all other event types ---
+    // --- 4. Return 200 for all event types ---
     return NextResponse.json({ received: true });
   } catch (err) {
     console.error("Webhook handler error:", err);
