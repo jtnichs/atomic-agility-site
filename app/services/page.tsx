@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TestimonialGrid from "@/components/TestimonialGrid";
 
 // --- Icons ---
 
@@ -233,7 +234,25 @@ export default function Services() {
         </div>
       </section>
 
-      {/* SECTION 5 — CREDENTIALS STRIP */}
+      {/* SECTION 5 — TESTIMONIALS */}
+      <section className="w-full bg-navy py-24 px-4">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <p className="text-sm uppercase tracking-widest text-cyan">
+              Student Feedback
+            </p>
+            <h2 className="mt-2 text-4xl font-bold text-white">
+              What Practitioners Say About Training With Us
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+              Across 33 cohorts, our students rate likelihood to recommend at 9.43 out of 10.
+            </p>
+          </div>
+          <TestimonialGrid />
+        </div>
+      </section>
+
+      {/* SECTION 6 — CREDENTIALS STRIP */}
       <section className="w-full bg-navy py-12 px-4">
         <div className="mx-auto max-w-7xl text-center">
           <p className="text-sm uppercase tracking-widest text-muted">
@@ -252,7 +271,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* SECTION 6 — BOTTOM CTA BANNER */}
+      {/* SECTION 7 — BOTTOM CTA BANNER */}
       <section className="w-full bg-gradient-to-b from-navy to-navyMid py-24 px-4">
         <div className="mx-auto max-w-7xl text-center">
           <h2 className="text-4xl font-bold text-white">

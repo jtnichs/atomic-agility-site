@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 
 // --- Icons ---
 
@@ -242,7 +243,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 5 — CTA BANNER */}
+      {/* SECTION 5 — TESTIMONIALS */}
+      <section className="w-full bg-navyMid py-24 px-4">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <p className="text-sm uppercase tracking-widest text-cyan">
+              What Our Students Say
+            </p>
+            <h2 className="mt-2 text-4xl font-bold text-white">
+              Trusted by Practitioners Across Government and Industry
+            </h2>
+          </div>
+          <TestimonialCarousel />
+        </div>
+      </section>
+
+      {/* SECTION 6 — CTA BANNER */}
       <section className="w-full bg-gradient-to-b from-navy to-navyMid py-24 px-4">
         <div className="mx-auto max-w-7xl text-center">
           <h2 className="text-4xl font-bold text-white">
