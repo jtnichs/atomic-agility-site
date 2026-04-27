@@ -30,7 +30,7 @@ export async function sendRegistrationConfirmation({
     <!-- Header -->
     <div style="background-color:#000E22; padding:32px; text-align:center; border-bottom:2px solid #00487B;">
       <h1 style="color:#00A5F0; font-size:28px; margin:0;">Atomic Agility</h1>
-      <p style="color:#94a3b8; margin:8px 0 0;">agile coaching &amp; SAFe training</p>
+      <p style="color:#94a3b8; margin:8px 0 0;">Start small. React rapidly.</p>
     </div>
 
     <!-- Body -->
