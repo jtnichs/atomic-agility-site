@@ -244,11 +244,34 @@ export default function Services() {
             <h2 className="mt-2 text-4xl font-bold text-white">
               What Practitioners Say About Training With Us
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
-              Across 33 cohorts, our students rate likelihood to recommend at 9.43 out of 10.
-            </p>
           </div>
-          <TestimonialGrid />
+
+          {/* Scores row */}
+          <div className="mt-10">
+            <p className="mb-4 text-center text-xs uppercase tracking-widest text-muted">
+              Average scores across 33 cohorts · 112 students
+            </p>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+              {[
+                { label: "Instructor Knowledge", score: "4.87 / 5.0" },
+                { label: "Training & Facilitation", score: "4.82 / 5.0" },
+                { label: "Training Content", score: "4.60 / 5.0" },
+                { label: "Likelihood to Recommend", score: "9.43 / 10.0" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-xl border border-[#00487B] bg-navyMid p-6 text-center"
+                >
+                  <p className="text-3xl font-bold text-cyan">{item.score}</p>
+                  <p className="mt-2 text-sm text-muted">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-16">
+            <TestimonialGrid />
+          </div>
         </div>
       </section>
 

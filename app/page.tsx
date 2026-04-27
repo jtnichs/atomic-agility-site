@@ -90,6 +90,7 @@ const stats = [
   { value: "5+", label: "Federal Agencies Served" },
   { value: "SAFe", label: "Certified Practitioners" },
   { value: "100+", label: "Teams Coached" },
+  { value: "9.43/10", label: "Likelihood to Recommend" },
 ];
 
 // --- Agencies ---
