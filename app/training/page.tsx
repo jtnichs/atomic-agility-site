@@ -198,7 +198,6 @@ export default async function TrainingPage() {
       )
     `)
     .gte("start_date", today)
-    .eq("courses.is_published", true)
     .order("start_date", { ascending: true });
 
   console.log("Training page — schedules:", JSON.stringify(schedules, null, 2));
@@ -213,7 +212,7 @@ export default async function TrainingPage() {
       ...s,
       courses: Array.isArray(s.courses) ? s.courses[0] : (s.courses as Course),
     }))
-    .filter((s) => s.courses !== undefined) as NormalizedSchedule[];
+    .filter((s) => s.courses !== undefined && s.courses.is_published === true) as NormalizedSchedule[];
 
   return (
     <>
