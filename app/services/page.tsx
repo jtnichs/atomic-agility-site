@@ -4,6 +4,7 @@ import TestimonialGrid from "@/components/TestimonialGrid";
 // --- Icons ---
 
 function CoachingIcon() {
+  // lucide-react "UserRound" — single rounded figure that reads clearly as one coach
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,18 +13,18 @@ function CoachingIcon() {
       viewBox="0 0 24 24"
       stroke="currentColor"
       strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M17 20h5v-1a4 4 0 00-5.916-3.52M9 20H4v-1a4 4 0 015.916-3.52M15 7a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0zm-18 0a3 3 0 116 0 3 3 0 01-6 0z"
-      />
+      <circle cx="12" cy="8" r="5" />
+      <path d="M20 21a8 8 0 0 0-16 0" />
     </svg>
   );
 }
 
 function TrainingIcon() {
+  // lucide-react "Presentation" — board on a stand, the clearest "teaching surface" read
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -32,13 +33,13 @@ function TrainingIcon() {
       viewBox="0 0 24 24"
       stroke="currentColor"
       strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.966 8.966 0 00-6 2.292m0-14.25v14.25"
-      />
+      <path d="M2 3h20" />
+      <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
+      <path d="m7 21 5-5 5 5" />
     </svg>
   );
 }
@@ -125,9 +126,10 @@ export default function Services() {
                   "Teams adopting agile for the first time",
                   "Organizations struggling with inconsistent agile practices",
                   "Leaders who want to build a coaching culture internally",
+                  "Startup founders and entrepreneurs embedding Lean Startup discipline from day one.",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-cyan" />
+                    <span className="mt-2.5 h-2 w-2 flex-shrink-0 rounded-full bg-cyan" />
                     <span className="text-muted leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -148,13 +150,13 @@ export default function Services() {
               </p>
               <ul className="mt-6 space-y-4">
                 {[
-                  "SAFe Agilist (SA) Certification",
-                  "SAFe Scrum Master (SSM) Certification",
+                  "SAFe Certification Courses",
                   "Custom Agile Workshops",
                   "AI & Agile Integration Workshops",
+                  "Post-class resources and consulting support",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-cyan" />
+                    <span className="mt-2.5 h-2 w-2 flex-shrink-0 rounded-full bg-cyan" />
                     <span className="text-muted leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -176,7 +178,7 @@ export default function Services() {
                 workshops tailored to your team&apos;s specific context.
               </p>
               <Link
-                href="/contact"
+                href="/training"
                 className="mt-2 inline-block self-start rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
               >
                 View Upcoming Training
@@ -224,7 +226,7 @@ export default function Services() {
                   "Government agencies modernizing their delivery model",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-cyan" />
+                    <span className="mt-2.5 h-2 w-2 flex-shrink-0 rounded-full bg-cyan" />
                     <span className="text-muted leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -248,9 +250,6 @@ export default function Services() {
 
           {/* Scores row */}
           <div className="mt-10">
-            <p className="mb-4 text-center text-xs uppercase tracking-widest text-muted">
-              Average scores across 33 cohorts · 112 students
-            </p>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {[
                 { label: "Instructor Knowledge", score: "4.87 / 5.0" },

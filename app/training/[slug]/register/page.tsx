@@ -279,7 +279,7 @@ export default function RegisterPage() {
             </div>
 
             <p className="mt-4 text-sm text-[#94a3b8]">
-              ✓ Includes: Exam, Post-Class Office Hours, AI Toolkit,
+              ✓ Includes: Exam, Post-Class Consulting Session, AI Toolkit,
               Implementation Coaching
             </p>
           </div>

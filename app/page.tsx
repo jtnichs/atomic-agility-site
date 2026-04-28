@@ -4,6 +4,7 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 // --- Icons ---
 
 function CoachingIcon() {
+  // lucide-react "UserRound" — single rounded figure that reads clearly as one coach
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,18 +13,18 @@ function CoachingIcon() {
       viewBox="0 0 24 24"
       stroke="currentColor"
       strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M17 20h5v-1a4 4 0 00-5.916-3.52M9 20H4v-1a4 4 0 015.916-3.52M15 7a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0zm-18 0a3 3 0 116 0 3 3 0 01-6 0z"
-      />
+      <circle cx="12" cy="8" r="5" />
+      <path d="M20 21a8 8 0 0 0-16 0" />
     </svg>
   );
 }
 
 function TrainingIcon() {
+  // lucide-react "Presentation" — board on a stand, the clearest "teaching surface" read
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -32,13 +33,13 @@ function TrainingIcon() {
       viewBox="0 0 24 24"
       stroke="currentColor"
       strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.966 8.966 0 00-6 2.292m0-14.25v14.25"
-      />
+      <path d="M2 3h20" />
+      <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
+      <path d="m7 21 5-5 5 5" />
     </svg>
   );
 }
@@ -88,8 +89,7 @@ const services = [
 const stats = [
   { value: "15+", label: "Years of Agile Experience" },
   { value: "5+", label: "Federal Agencies Served" },
-  { value: "SAFe", label: "Certified Practitioners" },
-  { value: "100+", label: "Teams Coached" },
+  { value: "100+", label: "Professionals Coached" },
   { value: "9.43/10", label: "Likelihood to Recommend" },
 ];
 
@@ -153,8 +153,9 @@ export default function Home() {
             Real Agility. Practical Results.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
-            We help teams, leaders, and enterprises build sustainable agility
-            through coaching, training, and transformation support.
+            We help teams, leaders, entrepreneurs, and enterprises build
+            sustainable agility through coaching, training, and transformation
+            support.
           </p>
 
           <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -190,37 +191,36 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 gap-16 md:grid-cols-2 md:items-center">
-            {/* Left — body copy */}
-            <div className="space-y-6 text-lg leading-relaxed text-muted">
-              <p>
-                AI isn&apos;t a future concern — it&apos;s reshaping how teams
-                operate right now. Most agile frameworks weren&apos;t designed
-                with this kind of disruption in mind.
-              </p>
-              <p>
-                Atomic Agility was. Our approach combines 15 years of
-                real-world agile experience with a framework specifically
-                designed for organizations navigating technological disruption.
-              </p>
-              <p>
-                We&apos;re not AI influencers who discovered agile. We&apos;re
-                agile coaches who&apos;ve been preparing for this moment.
-              </p>
-            </div>
+          {/* Body copy */}
+          <div className="mx-auto mt-16 max-w-3xl space-y-6 text-lg leading-relaxed text-muted">
+            <p>
+              AI isn&apos;t a future concern — it&apos;s reshaping how we
+              operate right now. Most agile frameworks weren&apos;t designed
+              with this kind of disruption in mind.
+            </p>
+            <p>
+              Atomic Agility was. Our approach combines 15 years of real-world
+              agile experience with a framework specifically designed for
+              businesses, organizations, and entrepreneurs navigating
+              technological disruption.
+            </p>
+            <p>
+              We&apos;re not AI influencers who discovered agile. We&apos;re
+              agile coaches who&apos;ve been preparing for this moment.
+            </p>
+          </div>
 
-            {/* Right — stat grid */}
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-xl border border-[#00487B] bg-navyMid p-6 text-center"
-                >
-                  <p className="text-4xl font-bold text-cyan">{stat.value}</p>
-                  <p className="mt-2 text-sm text-muted">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+          {/* Stat grid — 1-up mobile, 2-up tablet, 4-up desktop */}
+          <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-xl border border-[#00487B] bg-navyMid p-6 text-center"
+              >
+                <p className="text-4xl font-bold text-cyan">{stat.value}</p>
+                <p className="mt-2 text-sm text-muted">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
