@@ -289,7 +289,7 @@ export default function Services() {
                 alt={agency.alt}
                 width={120}
                 height={64}
-                className="h-16 w-auto brightness-0 invert"
+                className="h-16 w-auto"
               />
             ))}
           </div>
