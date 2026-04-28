@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import TestimonialGrid from "@/components/TestimonialGrid";
 
@@ -67,11 +68,11 @@ function TransformIcon() {
 // --- Data ---
 
 const agencies = [
-  "U.S. Census Bureau",
-  "Federal Reserve",
-  "Dept. of Commerce",
-  "Dept. of Justice",
-  "OMB",
+  { src: "/images/agencies/census-seal.svg", alt: "U.S. Census Bureau seal" },
+  { src: "/images/agencies/federal-reserve-seal.svg", alt: "Federal Reserve seal" },
+  { src: "/images/agencies/doc-seal.svg", alt: "U.S. Department of Commerce seal" },
+  { src: "/images/agencies/doj-seal.svg", alt: "U.S. Department of Justice seal" },
+  { src: "/images/agencies/omb-seal.svg", alt: "Office of Management and Budget seal" },
 ];
 
 // --- Page ---
@@ -280,14 +281,16 @@ export default function Services() {
           <p className="text-sm uppercase tracking-widest text-muted">
             Trusted by Leading Federal Agencies
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
             {agencies.map((agency) => (
-              <span
-                key={agency}
-                className="rounded-lg border border-[#00487B] bg-navyMid px-6 py-3 text-lg font-medium text-white"
-              >
-                {agency}
-              </span>
+              <Image
+                key={agency.alt}
+                src={agency.src}
+                alt={agency.alt}
+                width={120}
+                height={64}
+                className="h-16 w-auto brightness-0 invert"
+              />
             ))}
           </div>
         </div>
