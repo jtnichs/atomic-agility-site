@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabase";
+import { MetricGrid } from "@/components/MetricCard";
 
 export const dynamic = "force-dynamic";
 
@@ -380,20 +381,14 @@ export default async function CoursePage({
                   {instructor.bio}
                 </p>
               ) : (
-                <div className="space-y-4 text-lg leading-relaxed text-muted">
-                  <p>
-                    John Nichols is an agile coach and consultant with 15 years
-                    of experience helping teams and organizations build real,
-                    sustainable agility. His work spans federal government,
-                    enterprise, and high-growth organizations.
-                  </p>
-                  <p>
-                    Before founding Atomic Agility, John led agile
-                    transformations at the U.S. Census Bureau, Federal Reserve,
-                    Department of Commerce, Department of Justice, and the
-                    Office of Management and Budget.
-                  </p>
-                </div>
+                <p className="text-lg leading-relaxed text-muted">
+                  Agile coach, consultant, and SAFe-certified trainer with 15+
+                  years of experience guiding federal agencies — including the
+                  U.S. Census Bureau, Federal Reserve, Department of Commerce,
+                  Department of Justice, and OMB — alongside private-sector
+                  organizations navigating transformation. Founder of Atomic
+                  Agility. 100+ professionals certified.
+                </p>
               )}
               <a
                 href={
@@ -406,6 +401,11 @@ export default async function CoursePage({
               >
                 Connect on LinkedIn &rarr;
               </a>
+
+              {/* Founder credential metrics — shared with Homepage + About */}
+              <div className="mt-2">
+                <MetricGrid />
+              </div>
             </div>
           </div>
         </div>
@@ -416,7 +416,7 @@ export default async function CoursePage({
         <div className="mx-auto max-w-7xl text-center">
           <h2 className="text-4xl font-bold text-white">Ready to Register?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
-            Spots are limited to 15 students per class.
+            Spots are limited to 10 students per class.
           </p>
           <div className="mt-10">
             <Link

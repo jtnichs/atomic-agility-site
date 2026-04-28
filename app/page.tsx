@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import { MetricGrid } from "@/components/MetricCard";
 
 // --- Icons ---
 
@@ -85,15 +86,6 @@ const services = [
   },
 ];
 
-// --- Stats ---
-
-const stats = [
-  { value: "15+", label: "Years of Agile Experience" },
-  { value: "5+", label: "Federal Agencies Served" },
-  { value: "100+", label: "Professionals Coached" },
-  { value: "9.43/10", label: "Likelihood to Recommend" },
-];
-
 // --- Agencies ---
 
 const agencies = [
@@ -123,12 +115,20 @@ export default function Home() {
           adapt with the clarity, speed, and structure that agile was always
           meant to provide.
         </p>
-        <Link
-          href="/contact"
-          className="mt-10 rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
-        >
-          Work With Us
-        </Link>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link
+            href="/contact"
+            className="rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
+          >
+            Work With Us
+          </Link>
+          <Link
+            href="/training"
+            className="rounded-lg border border-cyan px-8 py-4 text-lg font-semibold text-cyan transition-colors duration-200 hover:bg-cyan hover:text-white"
+          >
+            Get Training
+          </Link>
+        </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-10 flex animate-bounce flex-col items-center">
@@ -211,17 +211,9 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Stat grid — 1-up mobile, 2-up tablet, 4-up desktop */}
-          <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-xl border border-[#00487B] bg-navyMid p-6 text-center"
-              >
-                <p className="text-4xl font-bold text-cyan">{stat.value}</p>
-                <p className="mt-2 text-sm text-muted">{stat.label}</p>
-              </div>
-            ))}
+          {/* Stat grid — shared MetricGrid component, see components/MetricCard.tsx */}
+          <div className="mt-16">
+            <MetricGrid />
           </div>
         </div>
       </section>

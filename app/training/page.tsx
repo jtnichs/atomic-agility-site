@@ -95,8 +95,9 @@ const features = [
     title: "Implementation Coaching",
     body: "30 days of post-class coaching support via email. We help you apply what you learned to your actual organization — not just pass the exam.",
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-1a4 4 0 00-5.916-3.52M9 20H4v-1a4 4 0 015.916-3.52M15 7a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0zm-18 0a3 3 0 116 0 3 3 0 01-6 0z" />
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21a8 8 0 0 0-16 0" />
       </svg>
     ),
   },

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MetricGrid } from "@/components/MetricCard";
 
 // --- Icons for Approach cards ---
 
@@ -64,13 +65,6 @@ function DisruptionIcon() {
 }
 
 // --- Data ---
-
-const stats = [
-  { value: "15+", label: "Years of Experience" },
-  { value: "5+", label: "Federal Agencies Served" },
-  { value: "100+", label: "Teams Coached" },
-  { value: "SAFe", label: "Certified Practitioner" },
-];
 
 const principles = [
   {
@@ -168,17 +162,9 @@ export default function About() {
                 Connect on LinkedIn &rarr;
               </a>
 
-              {/* Stat grid */}
-              <div className="mt-4 grid grid-cols-2 gap-6">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-xl border border-[#00487B] bg-navyMid p-6 text-center"
-                  >
-                    <p className="text-4xl font-bold text-cyan">{stat.value}</p>
-                    <p className="mt-2 text-sm text-muted">{stat.label}</p>
-                  </div>
-                ))}
+              {/* Stat grid — shared MetricGrid component, see components/MetricCard.tsx */}
+              <div className="mt-4">
+                <MetricGrid />
               </div>
             </div>
           </div>
