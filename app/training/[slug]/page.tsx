@@ -93,7 +93,7 @@ const features = [
   },
   {
     title: "AI Integration Toolkit",
-    body: "A practical toolkit of AI prompts, templates, and workflows designed for agile practitioners. Start applying AI to your agile practice on day one.",
+    body: "A practical toolkit of AI prompts, templates, and workflows designed for agile practitioners. Includes AI led quiz preparation and practice exam. Start applying AI to your agile practice on day one.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
@@ -104,8 +104,9 @@ const features = [
     title: "Implementation Coaching",
     body: "30 days of post-class coaching support via email. We help you apply what you learned to your actual organization — not just pass the exam.",
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-1a4 4 0 00-5.916-3.52M9 20H4v-1a4 4 0 015.916-3.52M15 7a4 4 0 11-8 0 4 4 0 018 0zm6 4a3 3 0 11-6 0 3 3 0 016 0zm-18 0a3 3 0 116 0 3 3 0 01-6 0z" />
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21a8 8 0 0 0-16 0" />
       </svg>
     ),
   },
