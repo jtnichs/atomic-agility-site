@@ -239,8 +239,8 @@ export default function Home() {
                 src={agency.src}
                 alt={agency.alt}
                 width={120}
-                height={64}
-                className="h-16 w-auto"
+                height={100}
+                className="h-[100px] w-auto"
               />
             ))}
           </div>
