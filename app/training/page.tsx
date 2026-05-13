@@ -167,12 +167,14 @@ function ScheduleCard({ schedule }: { schedule: NormalizedSchedule }) {
       </div>
 
       {/* CTA */}
-      <Link
-        href={`/training/${course.slug}?schedule=${schedule.id}`}
-        className="mt-6 block w-full rounded-lg bg-cyan py-3 text-center font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
-      >
-        Register Now
-      </Link>
+      <div className="mt-auto">
+        <Link
+          href={`/training/${course.slug}?schedule=${schedule.id}`}
+          className="mt-6 block w-full rounded-lg bg-cyan py-3 text-center font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
+        >
+          Register Now
+        </Link>
+      </div>
     </div>
   );
 }
