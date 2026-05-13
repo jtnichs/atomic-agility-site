@@ -24,6 +24,7 @@ interface Schedule {
   location: string | null;
   max_seats: number | null;
   price_cents: number | null;
+  status: string | null;
   courses: Course | Course[];
 }
 
@@ -191,6 +192,7 @@ export default async function TrainingPage() {
       location,
       max_seats,
       price_cents,
+      status,
       courses (
         id,
         title,
@@ -200,6 +202,7 @@ export default async function TrainingPage() {
         is_published
       )
     `)
+    .eq("status", "open")
     .gte("start_date", today)
     .order("start_date", { ascending: true });
 
