@@ -70,6 +70,16 @@ function UsersIcon() {
   );
 }
 
+// --- PDF mapping (course slug → downloadable overview PDF) ---
+
+const COURSE_PDF_MAP: Record<string, string> = {
+  "leading-safe": "SAFe_AI-Empowered_Overview_SA.pdf",
+  "leading-safe-for-government": "SAFe_AI-Empowered_forGovt_SA.pdf",
+  "safe-popm": "SAFe_AI-Empowered_Overview_POPM.pdf",
+  "safe-scrum-master": "SAFe_AI-Empowered_Overview_Partner_SSM.pdf",
+  "safe-lpm": "LPM_6.0_Partner.pdf",
+};
+
 // --- Badge mapping (course slug → badge file) ---
 
 const BADGE_MAP: Record<string, string> = {
@@ -298,6 +308,27 @@ export default async function CoursePage({
               >
                 View Upcoming Dates
               </a>
+
+              {COURSE_PDF_MAP[typedCourse.slug] && (
+                <a
+                  href={`/resources/${COURSE_PDF_MAP[typedCourse.slug]}`}
+                  download
+                  className="mt-3 inline-flex items-center gap-2 rounded-lg border border-[#00A5F0] px-8 py-4 text-lg font-semibold text-[#00A5F0] transition-colors duration-200 hover:bg-[#00A5F0] hover:text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                  </svg>
+                  Download Course Overview
+                </a>
+              )}
             </div>
 
             {/* Right column — certification badge (desktop only) */}
