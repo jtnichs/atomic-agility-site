@@ -302,33 +302,35 @@ export default async function CoursePage({
                 ))}
               </div>
 
-              <a
-                href="#schedules"
-                className="mt-8 inline-block rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
-              >
-                View Upcoming Dates
-              </a>
-
-              {COURSE_PDF_MAP[typedCourse.slug] && (
+              <div className="mt-8 flex flex-col items-start gap-3">
                 <a
-                  href={`/resources/${COURSE_PDF_MAP[typedCourse.slug]}`}
-                  download
-                  className="mt-3 inline-flex items-center gap-2 rounded-lg border border-[#00A5F0] px-8 py-4 text-lg font-semibold text-[#00A5F0] transition-colors duration-200 hover:bg-[#00A5F0] hover:text-white"
+                  href="#schedules"
+                  className="inline-block rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 flex-shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                    aria-hidden="true"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                  </svg>
-                  Download Course Overview
+                  View Upcoming Dates
                 </a>
-              )}
+
+                {COURSE_PDF_MAP[typedCourse.slug] && (
+                  <a
+                    href={`/resources/${COURSE_PDF_MAP[typedCourse.slug]}`}
+                    download
+                    className="inline-flex items-center gap-2 rounded-lg border border-[#00A5F0] px-8 py-4 text-lg font-semibold text-[#00A5F0] transition-colors duration-200 hover:bg-[#00A5F0] hover:text-white"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                    Download Course Overview
+                  </a>
+                )}
+              </div>
             </div>
 
             {/* Right column — certification badge (desktop only) */}
