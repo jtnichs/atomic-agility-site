@@ -74,7 +74,7 @@ function UsersIcon() {
 
 const BADGE_MAP: Record<string, string> = {
   "leading-safe": "/images/courses/safe-badge-sa.svg",
-  "leading-safe-government": "/images/courses/safe-badge-sa.svg",
+  "leading-safe-for-government": "/images/courses/safe-badge-sa.svg",
   "safe-popm": "/images/courses/safe-badge-popm.svg",
   "safe-scrum-master": "/images/courses/safe-badge-ssm.svg",
   "safe-lpm": "/images/courses/safe-badge-lpm.svg",
