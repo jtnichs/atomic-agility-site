@@ -450,4 +450,48 @@ export default async function CoursePage({
                   years of experience guiding federal agencies — including the
                   U.S. Census Bureau, Federal Reserve, Department of Commerce,
                   Department of Justice, and OMB — alongside private-sector
-            
+                  organizations navigating transformation. Founder of Atomic
+                  Agility. 100+ professionals certified.
+                </p>
+              )}
+              <a
+                href={
+                  instructor?.linkedin_url ??
+                  "https://www.linkedin.com/in/john-tyler-nichols/"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-cyan hover:underline"
+              >
+                Connect on LinkedIn &rarr;
+              </a>
+
+              {/* Founder credential metrics — shared with Homepage + About */}
+              <div className="mt-2">
+                <MetricGrid />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5 — CTA BANNER */}
+      <section className="w-full bg-gradient-to-b from-navy to-navyMid py-24 px-4">
+        <div className="mx-auto max-w-7xl text-center">
+          <h2 className="text-4xl font-bold text-white">Ready to Register?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+            Spots are limited to 10 students per class.
+          </p>
+          <div className="mt-10">
+            <Link
+              href={`/training/${typedCourse.slug}/register`}
+              className="inline-block rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
+            >
+              Register Now
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
