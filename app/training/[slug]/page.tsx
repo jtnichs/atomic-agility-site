@@ -70,6 +70,16 @@ function UsersIcon() {
   );
 }
 
+// --- Badge mapping (course slug → badge file) ---
+
+const BADGE_MAP: Record<string, string> = {
+  "leading-safe": "/images/courses/safe-badge-sa.svg",
+  "leading-safe-government": "/images/courses/safe-badge-sa.svg",
+  "safe-popm": "/images/courses/safe-badge-popm.svg",
+  "safe-scrum-master": "/images/courses/safe-badge-ssm.svg",
+  "safe-lpm": "/images/courses/safe-badge-lpm.svg",
+};
+
 // --- Feature cards (same as Training Hub) ---
 
 const features = [
@@ -245,46 +255,63 @@ export default async function CoursePage({
       {/* SECTION 1 — COURSE HERO */}
       <section className="flex flex-col bg-navy px-4 py-24">
         <div className="mx-auto w-full max-w-7xl">
-          {/* Breadcrumb */}
-          <p className="text-sm text-muted">
-            <Link href="/training" className="hover:text-white transition-colors duration-200">
-              Training
-            </Link>
-            {" → "}
-            <span>{typedCourse.title}</span>
-          </p>
+          <div className="flex flex-col md:flex-row md:items-center gap-8">
+            {/* Left column — all hero text content */}
+            <div className="flex-1">
+              {/* Breadcrumb */}
+              <p className="text-sm text-muted">
+                <Link href="/training" className="hover:text-white transition-colors duration-200">
+                  Training
+                </Link>
+                {" → "}
+                <span>{typedCourse.title}</span>
+              </p>
 
-          <h1 className="mt-4 text-5xl font-bold text-white md:text-6xl">
-            {typedCourse.title}
-          </h1>
-          <p className="mt-4 text-2xl font-medium text-cyan">
-            SAFe Certification | 2-Day Virtual Course | Exam Included
-          </p>
+              <h1 className="mt-4 text-5xl font-bold text-white md:text-6xl">
+                {typedCourse.title}
+              </h1>
+              <p className="mt-4 text-2xl font-medium text-cyan">
+                SAFe Certification | 2-Day Virtual Course | Exam Included
+              </p>
 
-          {typedCourse.description && (
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted">
-              {typedCourse.description}
-            </p>
-          )}
+              {typedCourse.description && (
+                <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted">
+                  {typedCourse.description}
+                </p>
+              )}
 
-          {/* Stat pills */}
-          <div className="mt-6 flex flex-wrap gap-3">
-            {["2 Days", "Virtual", "Exam Included", "15 PDUs"].map((pill) => (
-              <span
-                key={pill}
-                className="rounded-full border border-[#00487B] bg-navyMid px-4 py-2 text-sm text-muted"
+              {/* Stat pills */}
+              <div className="mt-6 flex flex-wrap gap-3">
+                {["2 Days", "Virtual", "Exam Included", "15 PDUs"].map((pill) => (
+                  <span
+                    key={pill}
+                    className="rounded-full border border-[#00487B] bg-navyMid px-4 py-2 text-sm text-muted"
+                  >
+                    {pill}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href="#schedules"
+                className="mt-8 inline-block rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
               >
-                {pill}
-              </span>
-            ))}
-          </div>
+                View Upcoming Dates
+              </a>
+            </div>
 
-          <a
-            href="#schedules"
-            className="mt-8 inline-block rounded-lg bg-cyan px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
-          >
-            View Upcoming Dates
-          </a>
+            {/* Right column — certification badge (desktop only) */}
+            {BADGE_MAP[typedCourse.slug] && (
+              <div className="hidden md:flex flex-shrink-0 items-center justify-center w-48">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={BADGE_MAP[typedCourse.slug]}
+                  alt="SAFe Certification Badge"
+                  style={{ width: "180px", height: "auto" }}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </section>
 

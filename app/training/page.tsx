@@ -62,6 +62,16 @@ function UsersIcon() {
   );
 }
 
+// --- Badge mapping (course slug → badge file) ---
+
+const BADGE_MAP: Record<string, string> = {
+  "leading-safe": "/images/courses/safe-badge-sa.svg",
+  "leading-safe-government": "/images/courses/safe-badge-sa.svg",
+  "safe-popm": "/images/courses/safe-badge-popm.svg",
+  "safe-scrum-master": "/images/courses/safe-badge-ssm.svg",
+  "safe-lpm": "/images/courses/safe-badge-lpm.svg",
+};
+
 // --- Feature card data ---
 
 const features = [
@@ -117,8 +127,10 @@ function ScheduleCard({ schedule }: { schedule: NormalizedSchedule }) {
   const displayPrice =
     schedulePriceCents !== null ? schedulePriceCents : coursePriceCents;
 
+  const badgeSrc = BADGE_MAP[course.slug];
+
   return (
-    <div className="group rounded-xl border border-[#00487B] bg-navy p-8 flex flex-col transition-colors duration-200 hover:border-cyan">
+    <div className="relative group rounded-xl border border-[#00487B] bg-navy p-8 flex flex-col transition-colors duration-200 hover:border-cyan">
       {/* Top row */}
       <div className="flex items-start justify-between gap-4">
         <h3 className="text-xl font-bold text-white">{course.title}</h3>
@@ -175,6 +187,16 @@ function ScheduleCard({ schedule }: { schedule: NormalizedSchedule }) {
           Register Now
         </Link>
       </div>
+
+      {/* SAFe Certification Badge */}
+      {badgeSrc && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={badgeSrc}
+          alt="SAFe Certification Badge"
+          className="absolute bottom-4 right-4 w-[72px] h-auto pointer-events-none"
+        />
+      )}
     </div>
   );
 }
