@@ -155,45 +155,46 @@ function ScheduleCard({ schedule }: { schedule: NormalizedSchedule }) {
         </div>
       )}
 
-      {/* Pricing */}
+      {/* Pricing + Badge — single flex row */}
       <div className="mt-4 border-t border-[#00487B] pt-4">
-        {isDiscounted ? (
-          <>
-            <span className="inline-block rounded-full bg-cyan px-3 py-1 text-xs font-semibold text-white">
-              Founding Student Rate
-            </span>
-            <p className="mt-2 text-3xl font-bold text-cyan">
-              {formatPrice(displayPrice)}
-            </p>
-            <p className="mt-1 text-sm text-muted">
-              <span className="line-through">
-                Regular price {formatPrice(coursePriceCents)}
-              </span>
-            </p>
-          </>
-        ) : (
-          <p className="text-3xl font-bold text-cyan">
-            {formatPrice(displayPrice)}
-          </p>
-        )}
-      </div>
-
-      {/* CTA — badge row sits directly above the button, both anchored to the bottom */}
-      <div className="mt-auto">
-        {badgeSrc && (
-          <div className="flex items-center py-2">
-            <div className="flex-1" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+        <div className="flex items-center justify-between gap-2">
+          <div>
+            {isDiscounted ? (
+              <>
+                <span className="inline-block rounded-full bg-cyan px-3 py-1 text-xs font-semibold text-white">
+                  Founding Student Rate
+                </span>
+                <p className="mt-2 text-3xl font-bold text-cyan">
+                  {formatPrice(displayPrice)}
+                </p>
+                <p className="mt-1 text-sm text-muted">
+                  <span className="line-through">
+                    Regular price {formatPrice(coursePriceCents)}
+                  </span>
+                </p>
+              </>
+            ) : (
+              <p className="text-3xl font-bold text-cyan">
+                {formatPrice(displayPrice)}
+              </p>
+            )}
+          </div>
+          {badgeSrc && (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={badgeSrc}
               alt="SAFe Certification Badge"
-              className="w-[72px] h-auto"
+              className="flex-shrink-0 w-[72px] h-auto"
             />
-          </div>
-        )}
+          )}
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div className="mt-auto">
         <Link
           href={`/training/${course.slug}?schedule=${schedule.id}`}
-          className="mt-2 block w-full rounded-lg bg-cyan py-3 text-center font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
+          className="mt-6 block w-full rounded-lg bg-cyan py-3 text-center font-semibold text-white transition-colors duration-200 hover:bg-[#0090d0]"
         >
           Register Now
         </Link>
