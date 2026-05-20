@@ -464,7 +464,7 @@ export default async function CoursePage({
       )}
 
       {/* SECTION 2 — WHAT'S INCLUDED */}
-      <section className="w-full bg-navyMid py-16 px-4">
+      <section className={`w-full ${params.slug === "leading-safe" ? "bg-navy" : "bg-navyMid"} py-16 px-4`}>
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <p className="text-sm uppercase tracking-widest text-cyan">
@@ -483,7 +483,7 @@ export default async function CoursePage({
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="rounded-xl border border-[#00487B] bg-navy p-8 transition-colors duration-200 hover:border-cyan"
+                className={`rounded-xl border border-[#00487B] ${params.slug === "leading-safe" ? "bg-navyMid" : "bg-navy"} p-8 transition-colors duration-200 hover:border-cyan`}
               >
                 {feature.icon}
                 <h3 className="text-xl font-bold text-white">{feature.title}</h3>
@@ -497,21 +497,21 @@ export default async function CoursePage({
 
       {/* LEADING SAFE — EXAM AT A GLANCE */}
       {params.slug === "leading-safe" && (
-        <section className="w-full bg-navy py-16 px-4">
+        <section className="w-full bg-navyMid py-16 px-4">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-10">
               <h2 className="text-4xl font-bold text-white">Exam At a Glance</h2>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              <div className="rounded-xl bg-[#00234B] p-8 text-center">
+              <div className="rounded-xl bg-[#000E22] p-8 text-center">
                 <p className="text-3xl font-bold text-[#00A5F0]">90 Minutes</p>
                 <p className="mt-2 text-sm text-gray-400">Exam Duration</p>
               </div>
-              <div className="rounded-xl bg-[#00234B] p-8 text-center">
+              <div className="rounded-xl bg-[#000E22] p-8 text-center">
                 <p className="text-3xl font-bold text-[#00A5F0]">45 Questions</p>
                 <p className="mt-2 text-sm text-gray-400">Multiple Choice</p>
               </div>
-              <div className="rounded-xl bg-[#00234B] p-8 text-center">
+              <div className="rounded-xl bg-[#000E22] p-8 text-center">
                 <p className="text-3xl font-bold text-[#00A5F0]">80%</p>
                 <p className="mt-2 text-sm text-gray-400">Passing Score</p>
               </div>
@@ -522,7 +522,7 @@ export default async function CoursePage({
 
       {/* LEADING SAFE — EXAM DOMAIN BREAKDOWN */}
       {params.slug === "leading-safe" && (
-        <section className="w-full bg-navyMid py-16 px-4">
+        <section className="w-full bg-navy py-16 px-4">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-4">
               <h2 className="text-4xl font-bold text-white">Exam Domain Breakdown</h2>
@@ -536,7 +536,7 @@ export default async function CoursePage({
       )}
 
       {/* SECTION 3 — UPCOMING SCHEDULES */}
-      <section id="schedules" className="w-full bg-navy py-16 px-4">
+      <section id="schedules" className={`w-full ${params.slug === "leading-safe" ? "bg-navyMid" : "bg-navy"} py-16 px-4`}>
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h2 className="text-4xl font-bold text-white">Upcoming Dates</h2>
@@ -553,7 +553,7 @@ export default async function CoursePage({
               ))}
             </div>
           ) : (
-            <div className="mt-12 rounded-xl border border-[#00487B] bg-navyMid p-12 text-center">
+            <div className={`mt-12 rounded-xl border border-[#00487B] ${params.slug === "leading-safe" ? "bg-navy" : "bg-navyMid"} p-12 text-center`}>
               <p className="text-xl font-semibold text-white">
                 New dates coming soon.
               </p>
@@ -572,7 +572,7 @@ export default async function CoursePage({
       </section>
 
       {/* SECTION 4 — INSTRUCTOR */}
-      <section className="w-full bg-navyMid py-16 px-4">
+      <section className={`w-full ${params.slug === "leading-safe" ? "bg-navy" : "bg-navyMid"} py-16 px-4`}>
         <div className="mx-auto max-w-7xl">
           <h2 className="text-4xl font-bold text-white">Your Instructor</h2>
 

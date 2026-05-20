@@ -71,18 +71,18 @@ export default function ExamDomainAccordion() {
       {domains.map((domain, i) => {
         const isOpen = openIndex === i;
         return (
-          <div key={domain.name} className="bg-[#000E22]">
+          <div key={domain.name} className="bg-[#00234B]">
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
-              className="w-full flex items-center justify-between px-6 py-5 text-left transition-colors duration-200 hover:bg-[#00234B]"
+              className="w-full flex items-center justify-between px-6 py-5 text-left transition-colors duration-200 hover:bg-[#00487B]"
               aria-expanded={isOpen}
             >
               <div className="flex items-center gap-4">
                 <span className="text-lg font-semibold text-white">
                   {domain.name}
                 </span>
-                <span className="rounded-full bg-[#00234B] px-3 py-0.5 text-sm font-medium text-[#00A5F0]">
+                <span className="rounded-full bg-[#000E22] px-3 py-0.5 text-sm font-medium text-[#00A5F0]">
                   {domain.weight}
                 </span>
               </div>
