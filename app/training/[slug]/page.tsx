@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 import { MetricGrid } from "@/components/MetricCard";
 import ExamDomainAccordion from "@/components/ExamDomainAccordion";
 import SSMExamDomainAccordion from "@/components/SSMExamDomainAccordion";
+import LPMExamDomainAccordion from "@/components/LPMExamDomainAccordion";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -270,7 +271,9 @@ export default async function CoursePage({
     : rawInstructor;
 
   const hasCustomSections =
-    params.slug === "leading-safe" || params.slug === "safe-scrum-master";
+    params.slug === "leading-safe" ||
+    params.slug === "safe-scrum-master" ||
+    params.slug === "safe-lpm";
 
   return (
     <>
@@ -360,6 +363,94 @@ export default async function CoursePage({
         </div>
       </section>
 
+
+      {/* LPM — WHO THIS IS FOR */}
+      {params.slug === "safe-lpm" && (
+        <section className="w-full bg-navyMid py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-white">Who Is This Course For?</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+                The LPM course is designed for leaders who need to manage an agile approach to portfolio planning, funding, and operations.
+              </p>
+            </div>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              {[
+                "Executive Leaders",
+                "Enterprise Architects",
+                "Product Management Leaders",
+                "PMO Leaders",
+                "Agile Coaches",
+                "SAFe Practice Consultants",
+              ].map((role) => (
+                <span
+                  key={role}
+                  className="rounded-full border border-[#00487B] bg-navy px-4 py-2 text-sm text-[#00A5F0]"
+                >
+                  {role}
+                </span>
+              ))}
+            </div>
+            <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-gray-300">
+              This course gives you the tools to lead with clarity and agility, whether you&apos;re already practicing SAFe or just starting to scale. It&apos;s designed for anyone responsible for bridging the gap between strategic vision and delivery.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* LPM — WHAT YOU'LL LEARN */}
+      {params.slug === "safe-lpm" && (
+        <section className="w-full bg-navy py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-white">What You&apos;ll Learn</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+                Advanced portfolio skills to connect strategy to execution and fund the right work at the right time.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#00234B] p-8">
+                <h3 className="text-xl font-bold text-white">Align Strategy with Execution</h3>
+                <p className="mt-3 leading-relaxed text-muted">Connect portfolio initiatives directly to business strategy and keep investments focused on the most important outcomes. Bridge the gap between vision and what teams actually deliver.</p>
+              </div>
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#00234B] p-8">
+                <h3 className="text-xl font-bold text-white">Lean Budgeting &amp; Portfolio Flow</h3>
+                <p className="mt-3 leading-relaxed text-muted">Explore how to fund value streams, establish guardrails, and manage epics using portfolio kanban to support continuous, lean flow. Move away from annual budgeting cycles toward dynamic funding.</p>
+              </div>
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#00234B] p-8">
+                <h3 className="text-xl font-bold text-white">Run Agile Portfolio Operations</h3>
+                <p className="mt-3 leading-relaxed text-muted">Gain practical tools for coordinating across value streams, managing change, and supporting excellence through agile PMOs and communities of practice. Keep the portfolio moving without command-and-control.</p>
+              </div>
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#00234B] p-8">
+                <h3 className="text-xl font-bold text-white">Design Your LPM Adoption Plan</h3>
+                <p className="mt-3 leading-relaxed text-muted">Capture your current state, define your portfolio vision, and build a step-by-step plan to bring Lean Portfolio Management to life. Leave with a concrete roadmap, not just theory.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* LPM — YOUTUBE EMBED */}
+      {params.slug === "safe-lpm" && (
+        <section className="w-full bg-navyMid py-12 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold text-white">See What LPM Covers</h2>
+            </div>
+            <div className="max-w-4xl mx-auto">
+              <div className="aspect-video w-full rounded-xl overflow-hidden shadow-md">
+                <iframe
+                  src="https://www.youtube.com/embed/IcemmmTPVzs"
+                  title="Lean Portfolio Management Course Overview"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="h-full w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* SSM — WHO THIS IS FOR */}
       {params.slug === "safe-scrum-master" && (
@@ -612,6 +703,46 @@ export default async function CoursePage({
         </div>
       </section>
 
+
+      {/* LPM — EXAM AT A GLANCE */}
+      {params.slug === "safe-lpm" && (
+        <section className="w-full bg-navyMid py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-10">
+              <h2 className="text-4xl font-bold text-white">Exam At a Glance</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="rounded-xl bg-[#000E22] p-8 text-center">
+                <p className="text-3xl font-bold text-[#00A5F0]">90 Minutes</p>
+                <p className="mt-2 text-sm text-gray-400">Exam Duration</p>
+              </div>
+              <div className="rounded-xl bg-[#000E22] p-8 text-center">
+                <p className="text-3xl font-bold text-[#00A5F0]">45 Questions</p>
+                <p className="mt-2 text-sm text-gray-400">Multiple Choice</p>
+              </div>
+              <div className="rounded-xl bg-[#000E22] p-8 text-center">
+                <p className="text-3xl font-bold text-[#00A5F0]">80%</p>
+                <p className="mt-2 text-sm text-gray-400">Passing Score</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* LPM — EXAM DOMAIN BREAKDOWN */}
+      {params.slug === "safe-lpm" && (
+        <section className="w-full bg-navy py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-4">
+              <h2 className="text-4xl font-bold text-white">Exam Domain Breakdown</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+                The LPM exam tests your ability to apply Lean Portfolio Management across four core functions.
+              </p>
+            </div>
+            <LPMExamDomainAccordion />
+          </div>
+        </section>
+      )}
 
       {/* SSM — EXAM AT A GLANCE */}
       {params.slug === "safe-scrum-master" && (
