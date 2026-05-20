@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { MetricGrid } from "@/components/MetricCard";
+import ExamDomainAccordion from "@/components/ExamDomainAccordion";
 
 export const dynamic = "force-dynamic";
 
@@ -351,6 +352,117 @@ export default async function CoursePage({
         </div>
       </section>
 
+
+      {/* LEADING SAFE — WHO THIS IS FOR */}
+      {params.slug === "leading-safe" && (
+        <section className="w-full bg-navy py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-white">Who Is This Course For?</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+                Leading SAFe is designed for current and aspiring leaders driving transformation in complex environments.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+              {/* Executives */}
+              <div className="rounded-xl border border-[#00487B] bg-navyMid p-8 transition-colors duration-200 hover:border-cyan">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#00A5F0]">Executives</h3>
+                <p className="mt-3 leading-relaxed text-muted">Align strategy with execution and leverage AI to accelerate high-level decision-making across the enterprise.</p>
+              </div>
+              {/* Directors */}
+              <div className="rounded-xl border border-[#00487B] bg-navyMid p-8 transition-colors duration-200 hover:border-cyan">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#00A5F0]">Directors</h3>
+                <p className="mt-3 leading-relaxed text-muted">Transition from traditional management to Lean-Agile leadership and optimize team flow.</p>
+              </div>
+              {/* Product Managers */}
+              <div className="rounded-xl border border-[#00487B] bg-navyMid p-8 transition-colors duration-200 hover:border-cyan">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#00A5F0]">Product Managers</h3>
+                <p className="mt-3 leading-relaxed text-muted">Drive customer-centricity and apply SAFe to prioritize backlogs and define high-impact features.</p>
+              </div>
+              {/* Agile Coaches */}
+              <div className="rounded-xl border border-[#00487B] bg-navyMid p-8 transition-colors duration-200 hover:border-cyan">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#00A5F0]">Agile Coaches</h3>
+                <p className="mt-3 leading-relaxed text-muted">Empower teams to reach high performance by integrating Lean-Agile practices and AI-driven insights.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* LEADING SAFE — WHAT YOU'LL LEARN */}
+      {params.slug === "leading-safe" && (
+        <section className="w-full bg-navyMid py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-white">What You&apos;ll Learn</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+                Strategic skills to lead Lean-Agile transformation and deliver value at scale.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#000E22] p-8">
+                <h3 className="text-xl font-bold text-white">Drive Business Agility</h3>
+                <p className="mt-3 leading-relaxed text-muted">Apply SAFe principles to sustain a successful Lean-Agile transformation. Build the organizational habits that make agility stick long after the training ends.</p>
+              </div>
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#000E22] p-8">
+                <h3 className="text-xl font-bold text-white">Create Strategic Alignment</h3>
+                <p className="mt-3 leading-relaxed text-muted">Move from traditional hierarchies to teams organized around value. Align your entire organization around clear objectives to improve the flow of work.</p>
+              </div>
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#000E22] p-8">
+                <h3 className="text-xl font-bold text-white">Execute PI Planning</h3>
+                <p className="mt-3 leading-relaxed text-muted">Lead and participate in Program Increment Planning to synchronize teams and departments around shared goals. Understand the heartbeat of SAFe delivery.</p>
+              </div>
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#000E22] p-8">
+                <h3 className="text-xl font-bold text-white">Foster Customer Centricity</h3>
+                <p className="mt-3 leading-relaxed text-muted">Apply Lean-Agile mindsets and Design Thinking to build solutions that meet real market needs. Put the customer at the center of every decision.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* LEADING SAFE — YOUTUBE EMBED */}
+      {params.slug === "leading-safe" && (
+        <section className="w-full bg-navy py-12 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold text-white">See What Leading SAFe Covers</h2>
+            </div>
+            <div className="max-w-4xl mx-auto">
+              <div className="aspect-video w-full rounded-xl overflow-hidden shadow-md">
+                <iframe
+                  src="https://www.youtube.com/embed/URr1ufudorM"
+                  title="Leading SAFe Course Overview"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="h-full w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* SECTION 2 — WHAT'S INCLUDED */}
       <section className="w-full bg-navyMid py-16 px-4">
         <div className="mx-auto max-w-7xl">
@@ -381,6 +493,47 @@ export default async function CoursePage({
           </div>
         </div>
       </section>
+
+
+      {/* LEADING SAFE — EXAM AT A GLANCE */}
+      {params.slug === "leading-safe" && (
+        <section className="w-full bg-navy py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-10">
+              <h2 className="text-4xl font-bold text-white">Exam At a Glance</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="rounded-xl bg-[#00234B] p-8 text-center">
+                <p className="text-3xl font-bold text-[#00A5F0]">90 Minutes</p>
+                <p className="mt-2 text-sm text-gray-400">Exam Duration</p>
+              </div>
+              <div className="rounded-xl bg-[#00234B] p-8 text-center">
+                <p className="text-3xl font-bold text-[#00A5F0]">45 Questions</p>
+                <p className="mt-2 text-sm text-gray-400">Multiple Choice</p>
+              </div>
+              <div className="rounded-xl bg-[#00234B] p-8 text-center">
+                <p className="text-3xl font-bold text-[#00A5F0]">80%</p>
+                <p className="mt-2 text-sm text-gray-400">Passing Score</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* LEADING SAFE — EXAM DOMAIN BREAKDOWN */}
+      {params.slug === "leading-safe" && (
+        <section className="w-full bg-navyMid py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-4">
+              <h2 className="text-4xl font-bold text-white">Exam Domain Breakdown</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+                The exam covers six domains. Here&apos;s what to expect on each.
+              </p>
+            </div>
+            <ExamDomainAccordion />
+          </div>
+        </section>
+      )}
 
       {/* SECTION 3 — UPCOMING SCHEDULES */}
       <section id="schedules" className="w-full bg-navy py-16 px-4">
