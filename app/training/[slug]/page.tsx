@@ -6,6 +6,7 @@ import { MetricGrid } from "@/components/MetricCard";
 import ExamDomainAccordion from "@/components/ExamDomainAccordion";
 import SSMExamDomainAccordion from "@/components/SSMExamDomainAccordion";
 import LPMExamDomainAccordion from "@/components/LPMExamDomainAccordion";
+import PoPMExamDomainAccordion from "@/components/PoPMExamDomainAccordion";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -273,7 +274,8 @@ export default async function CoursePage({
   const hasCustomSections =
     params.slug === "leading-safe" ||
     params.slug === "safe-scrum-master" ||
-    params.slug === "safe-lpm";
+    params.slug === "safe-lpm" ||
+    params.slug === "safe-popm";
 
   return (
     <>
@@ -363,6 +365,116 @@ export default async function CoursePage({
         </div>
       </section>
 
+
+      {/* POPM — WHO THIS IS FOR */}
+      {params.slug === "safe-popm" && (
+        <section className="w-full bg-navyMid py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-white">Who Is This Course For?</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+                The AI-Empowered POPM course is designed for professionals who bridge customer needs with program execution to maximize value delivery.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+              {/* Product Owners */}
+              <div className="rounded-xl border border-[#00487B] bg-navy p-8 transition-colors duration-200 hover:border-cyan">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#00A5F0]">Product Owners</h3>
+                <p className="mt-3 leading-relaxed text-muted">Own the Team Backlog and drive execution by translating features into stories, ensuring the right work is done at the right time.</p>
+              </div>
+              {/* Product Managers */}
+              <div className="rounded-xl border border-[#00487B] bg-navy p-8 transition-colors duration-200 hover:border-cyan">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#00A5F0]">Product Managers</h3>
+                <p className="mt-3 leading-relaxed text-muted">Guide the ART Backlog and roadmap, aligning strategy with execution to ensure the program delivers real business solutions.</p>
+              </div>
+              {/* Business Owners */}
+              <div className="rounded-xl border border-[#00487B] bg-navy p-8 transition-colors duration-200 hover:border-cyan">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#00A5F0]">Business Owners</h3>
+                <p className="mt-3 leading-relaxed text-muted">Align release plans and visions to ensure strategic investments and PI Objectives drive continuous organizational improvement.</p>
+              </div>
+              {/* Portfolio Managers */}
+              <div className="rounded-xl border border-[#00487B] bg-navy p-8 transition-colors duration-200 hover:border-cyan">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#00A5F0]">Portfolio Managers</h3>
+                <p className="mt-3 leading-relaxed text-muted">Gain visibility into how epics are decomposed into features and stories, using AI-driven insights to optimize investment and delivery.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* POPM — WHAT YOU'LL LEARN */}
+      {params.slug === "safe-popm" && (
+        <section className="w-full bg-navy py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-white">What You&apos;ll Learn</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+                Practical skills to maximize value delivery by bridging customer needs with Agile execution at scale.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#00234B] p-8">
+                <h3 className="text-xl font-bold text-white">Execute the POPM Roles</h3>
+                <p className="mt-3 leading-relaxed text-muted">Perform day-to-day responsibilities of backlog ownership and delivery forecasting. Represent the business and customer to ensure solutions deliver real value while managing risks and dependencies.</p>
+              </div>
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#00234B] p-8">
+                <h3 className="text-xl font-bold text-white">Facilitate PI Planning</h3>
+                <p className="mt-3 leading-relaxed text-muted">Lead and support PI Planning to align roadmaps and vision with business goals. Collaborate with stakeholders and teams to set clear PI Objectives and forecast work effectively.</p>
+              </div>
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#00234B] p-8">
+                <h3 className="text-xl font-bold text-white">Optimize Workflow</h3>
+                <p className="mt-3 leading-relaxed text-muted">Use design thinking and customer-centricity to guide the flow of features and stories. Translate high-level strategy into actionable backlog items that can be built, tested, and delivered quickly.</p>
+              </div>
+              <div className="rounded-xl border-l-4 border-[#00A5F0] bg-[#00234B] p-8">
+                <h3 className="text-xl font-bold text-white">Apply Practical AI Skills</h3>
+                <p className="mt-3 leading-relaxed text-muted">Gain specific techniques to apply AI in backlog refinement, prioritization, and feature discovery. Enhance customer connection while protecting sensitive data through responsible AI practices.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* POPM — YOUTUBE EMBED */}
+      {params.slug === "safe-popm" && (
+        <section className="w-full bg-navyMid py-12 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold text-white">See What SAFe POPM Covers</h2>
+            </div>
+            <div className="max-w-4xl mx-auto">
+              <div className="aspect-video w-full rounded-xl overflow-hidden shadow-md">
+                <iframe
+                  src="https://www.youtube.com/embed/4UZH1VUvnMg"
+                  title="SAFe POPM Course Overview"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="h-full w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* LPM — WHO THIS IS FOR */}
       {params.slug === "safe-lpm" && (
@@ -703,6 +815,46 @@ export default async function CoursePage({
         </div>
       </section>
 
+
+      {/* POPM — EXAM AT A GLANCE */}
+      {params.slug === "safe-popm" && (
+        <section className="w-full bg-navyMid py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-10">
+              <h2 className="text-4xl font-bold text-white">Exam At a Glance</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="rounded-xl bg-[#000E22] p-8 text-center">
+                <p className="text-3xl font-bold text-[#00A5F0]">90 Minutes</p>
+                <p className="mt-2 text-sm text-gray-400">Exam Duration</p>
+              </div>
+              <div className="rounded-xl bg-[#000E22] p-8 text-center">
+                <p className="text-3xl font-bold text-[#00A5F0]">45 Questions</p>
+                <p className="mt-2 text-sm text-gray-400">Multiple Choice</p>
+              </div>
+              <div className="rounded-xl bg-[#000E22] p-8 text-center">
+                <p className="text-3xl font-bold text-[#00A5F0]">82%</p>
+                <p className="mt-2 text-sm text-gray-400">Passing Score</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* POPM — EXAM DOMAIN BREAKDOWN */}
+      {params.slug === "safe-popm" && (
+        <section className="w-full bg-navy py-16 px-4">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center mb-4">
+              <h2 className="text-4xl font-bold text-white">Exam Domain Breakdown</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+                The exam covers six domains. Here&apos;s what to expect on each.
+              </p>
+            </div>
+            <PoPMExamDomainAccordion />
+          </div>
+        </section>
+      )}
 
       {/* LPM — EXAM AT A GLANCE */}
       {params.slug === "safe-lpm" && (
