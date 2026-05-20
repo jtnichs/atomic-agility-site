@@ -139,9 +139,11 @@ const features = [
 function ScheduleCard({
   schedule,
   course,
+  darkBg = false,
 }: {
   schedule: Schedule;
   course: Course;
+  darkBg?: boolean;
 }) {
   const schedulePriceCents = schedule.price_cents;
   const coursePriceCents = course.price_cents;
@@ -151,7 +153,7 @@ function ScheduleCard({
     schedulePriceCents !== null ? schedulePriceCents : coursePriceCents;
 
   return (
-    <div className="group rounded-xl border border-[#00487B] bg-navyMid p-8 flex flex-col transition-colors duration-200 hover:border-cyan">
+    <div className={`group rounded-xl border border-[#00487B] ${darkBg ? "bg-navy" : "bg-navyMid"} p-8 flex flex-col transition-colors duration-200 hover:border-cyan`}>
       {/* Top row */}
       <div className="flex items-start justify-between gap-4">
         <span className="text-lg font-semibold text-white">
@@ -549,6 +551,7 @@ export default async function CoursePage({
                   key={schedule.id}
                   schedule={schedule}
                   course={typedCourse}
+                  darkBg={params.slug === "leading-safe"}
                 />
               ))}
             </div>
