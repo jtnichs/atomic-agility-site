@@ -268,7 +268,7 @@ export default async function CoursePage({
     : rawInstructor;
 
   const hasCustomSections =
-    params.slug === "leading-safe" || params.slug === "safe-ssm";
+    params.slug === "leading-safe" || params.slug === "safe-scrum-master";
 
   return (
     <>
@@ -360,7 +360,7 @@ export default async function CoursePage({
 
 
       {/* SSM — WHO THIS IS FOR */}
-      {params.slug === "safe-ssm" && (
+      {params.slug === "safe-scrum-master" && (
         <section className="w-full bg-navyMid py-16 px-4">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
@@ -416,7 +416,7 @@ export default async function CoursePage({
       )}
 
       {/* SSM — WHAT YOU'LL LEARN */}
-      {params.slug === "safe-ssm" && (
+      {params.slug === "safe-scrum-master" && (
         <section className="w-full bg-navy py-16 px-4">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
@@ -448,7 +448,7 @@ export default async function CoursePage({
       )}
 
       {/* SSM — YOUTUBE EMBED */}
-      {params.slug === "safe-ssm" && (
+      {params.slug === "safe-scrum-master" && (
         <section className="w-full bg-navyMid py-12 px-4">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-8">
@@ -612,7 +612,7 @@ export default async function CoursePage({
 
 
       {/* SSM — EXAM AT A GLANCE */}
-      {params.slug === "safe-ssm" && (
+      {params.slug === "safe-scrum-master" && (
         <section className="w-full bg-navyMid py-16 px-4">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-10">
@@ -637,7 +637,7 @@ export default async function CoursePage({
       )}
 
       {/* SSM — EXAM DOMAIN BREAKDOWN */}
-      {params.slug === "safe-ssm" && (
+      {params.slug === "safe-scrum-master" && (
         <section className="w-full bg-navy py-16 px-4">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-4">
