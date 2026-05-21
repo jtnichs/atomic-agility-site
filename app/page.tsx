@@ -259,16 +259,16 @@ export default function Home() {
               <img
                 src="/images/SAFe/SAI_Partner_Badge_Bronze.svg"
                 alt="Scaled Agile Bronze Partner Badge"
-                height={100}
+                height={200}
                 width="auto"
-                className="h-[100px] w-auto"
+                className="h-[200px] w-auto"
               />
               <img
                 src="/images/SAFe/SAFe_New_Logo_white.svg"
                 alt="SAFe® Framework Logo"
-                height={40}
+                height={80}
                 width="auto"
-                className="h-10 w-auto mt-4"
+                className="h-20 w-auto mt-4"
               />
             </div>
           </div>
