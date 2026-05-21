@@ -217,11 +217,11 @@ export default function WhySAFe() {
             {whyCards.map((card) => (
               <div
                 key={card.title}
-                className="group rounded-xl border border-[#00487B] bg-white p-8 text-left transition-colors duration-200 hover:border-cyan"
+                className="group rounded-xl border border-[#00487B] bg-navyMid p-8 text-left transition-colors duration-200 hover:border-cyan"
               >
                 {card.icon}
-                <h3 className="text-xl font-bold text-navy">{card.title}</h3>
-                <p className="mt-3 leading-relaxed text-slate-600">
+                <h3 className="text-xl font-bold text-white">{card.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted">
                   {card.body}
                 </p>
               </div>
