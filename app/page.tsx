@@ -130,6 +130,18 @@ export default function Home() {
           </Link>
         </div>
 
+        {/* Partner badge trust signal — CHANGE 1 */}
+        <div className="mt-8 flex flex-col items-center gap-2">
+          <img
+            src="/images/SAFe/SAI_Partner_Badge_Bronze.svg"
+            alt="Scaled Agile Bronze Partner"
+            height={48}
+            width="auto"
+            className="h-12 w-auto"
+          />
+          <p className="text-xs text-muted">Official Scaled Agile Partner</p>
+        </div>
+
         {/* Scroll indicator */}
         <div className="absolute bottom-10 flex animate-bounce flex-col items-center">
           <svg
@@ -214,6 +226,62 @@ export default function Home() {
           {/* Stat grid — shared MetricGrid component, see components/MetricCard.tsx */}
           <div className="mt-16">
             <MetricGrid />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3.5 — WHY SAFe? TEASER — CHANGE 2 */}
+      <section className="w-full bg-navyMid py-24 px-4">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:items-center">
+            {/* Left — text */}
+            <div className="flex flex-col gap-6">
+              <div>
+                <p className="text-sm uppercase tracking-widest text-cyan">
+                  The Framework
+                </p>
+                <h2 className="mt-2 text-4xl font-bold text-white">
+                  Every Course Is Built on SAFe®
+                </h2>
+              </div>
+              <div className="space-y-5 text-lg leading-relaxed text-muted">
+                <p>
+                  SAFe® — the Scaled Agile Framework® — is the world&apos;s
+                  most trusted system for enterprise agility. It&apos;s the
+                  foundation of every certification we offer, and it&apos;s why
+                  our courses translate directly into real-world results.
+                </p>
+                <p>
+                  As an official Scaled Agile Partner, Atomic Agility delivers
+                  SAFe training that meets the framework&apos;s quality and
+                  content standards — so your certification carries weight.
+                </p>
+              </div>
+              <Link
+                href="/why-safe"
+                className="inline-block text-cyan hover:underline"
+              >
+                Learn more about SAFe and why it works &rarr;
+              </Link>
+            </div>
+
+            {/* Right — partner badge + SAFe logo */}
+            <div className="flex flex-col items-center justify-center gap-0">
+              <img
+                src="/images/SAFe/SAI_Partner_Badge_Bronze.svg"
+                alt="Scaled Agile Bronze Partner Badge"
+                height={100}
+                width="auto"
+                className="h-[100px] w-auto"
+              />
+              <img
+                src="/images/SAFe/SAFe_New_Logo_white.svg"
+                alt="SAFe® Framework Logo"
+                height={40}
+                width="auto"
+                className="h-10 w-auto mt-4"
+              />
+            </div>
           </div>
         </div>
       </section>
