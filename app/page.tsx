@@ -130,17 +130,6 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Partner badge trust signal — CHANGE 1 */}
-        <div className="mt-8 flex flex-col items-center gap-2">
-          <img
-            src="/images/SAFe/SAI_Partner_Badge_Bronze.svg"
-            alt="Scaled Agile Bronze Partner"
-            height={48}
-            width="auto"
-            className="h-12 w-auto"
-          />
-          <p className="text-xs text-muted">Official Scaled Agile Partner</p>
-        </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-10 flex animate-bounce flex-col items-center">
@@ -287,7 +276,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 4 — CREDENTIALS STRIP */}
-      <section className="w-full bg-navyMid py-12 px-4">
+      <section className="w-full bg-navy py-12 px-4">
         <div className="mx-auto max-w-7xl text-center">
           <p className="text-sm uppercase tracking-widest text-muted">
             Trusted by Leading Federal Agencies
