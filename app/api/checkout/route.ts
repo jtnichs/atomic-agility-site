@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { Resend } from "resend";
 import supabaseAdmin from "@/lib/supabase-admin";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -121,6 +124,25 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // --- 2b. Fire admin notification email (non-blocking) ---
+    resend.emails.send({
+      from: "john@atomicagility.us",
+      to: "john@atomicagility.us",
+      subject: `New Registration Started — ${firstName} ${lastName}`,
+      html: `
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Company:</strong> ${organization}</p>
+        <p><strong>Job Title:</strong> ${jobTitle}</p>
+        <p><strong>Course:</strong> ${course.title}</p>
+        <p><strong>Session Dates:</strong> ${formattedDates}</p>
+        <p><strong>How They Heard About Us:</strong> ${hearAboutUs ?? "Not provided"}</p>
+        <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+        <hr />
+        <p><em>Status: Pending — payment not yet completed</em></p>
+      `,
+    }).catch((err: unknown) => console.error("Admin notification email failed:", err));
 
     // --- 3. Create Stripe Checkout Session ---
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.atomicagility.us";
