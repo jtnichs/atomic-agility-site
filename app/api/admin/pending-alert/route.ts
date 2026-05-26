@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
     `)
     .eq("status", "pending")
     .is("stripe_payment_intent_id", null)
+    .is("admin_alerted_at", null)
     .lt("created_at", cutoff);
 
   if (error) {
@@ -86,12 +87,29 @@ export async function POST(request: NextRequest) {
     </p>
   `;
 
-  await resend.emails.send({
+  const { error: emailError } = await resend.emails.send({
     from: "john@atomicagility.us",
     to: "john@atomicagility.us",
     subject: `Pending Registrations Alert — ${pending.length} awaiting payment`,
     html,
   });
+
+  if (emailError) {
+    console.error("Pending alert email failed:", emailError);
+    return NextResponse.json({ error: "Email send failed", details: emailError }, { status: 500 });
+  }
+
+  // Mark all alerted registrations so they are not re-alerted on future cron runs
+  const alertedIds = pending.map((r) => r.id);
+  const { error: updateError } = await supabaseAdmin
+    .from("registrations")
+    .update({ admin_alerted_at: new Date().toISOString() })
+    .in("id", alertedIds);
+
+  if (updateError) {
+    // Alert was sent — log the error but don't fail the response
+    console.error("Failed to mark registrations as alerted:", updateError);
+  }
 
   console.log(`Pending alert sent: ${pending.length} stale registrations`);
 
