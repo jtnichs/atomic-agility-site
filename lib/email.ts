@@ -71,7 +71,7 @@ export async function sendRegistrationConfirmation({
       <h3 style="color:#ffffff; font-size:16px; margin:0 0 16px;">What's Included:</h3>
       <ul style="color:#94a3b8; font-size:14px; line-height:1.8; margin:0 0 32px; padding-left:20px;">
         <li>SAFe certification exam registration</li>
-        <li>Pre-class AI-powered context questionnaire</li>
+        <li>Pre-class AI-powered context profile</li>
         <li>Two post-class office hours sessions</li>
         <li>AI Integration Toolkit</li>
         <li>30 days post-class implementation coaching</li>
