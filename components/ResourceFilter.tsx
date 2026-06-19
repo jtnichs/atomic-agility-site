@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ResourceCard, { type ResourceCardData } from "@/components/ResourceCard";
-import type { ResourceType } from "@/lib/resources";
+import type { ResourceType } from "@/lib/resource-types";
 
 type FilterValue = "all" | ResourceType;
 

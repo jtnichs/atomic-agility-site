@@ -1,6 +1,6 @@
 import Link from "next/link";
-import type { Resource } from "@/lib/resources";
-import { RESOURCE_TYPE_LABELS } from "@/lib/resources";
+import type { Resource } from "@/lib/resource-types";
+import { RESOURCE_TYPE_LABELS } from "@/lib/resource-types";
 
 // Card data is the frontmatter without the (potentially large) MDX body.
 export type ResourceCardData = Omit<Resource, "content">;
