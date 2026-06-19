@@ -106,9 +106,11 @@ export default function ResourcesPage() {
   const featured = getFeaturedResource();
 
   // Strip the MDX body before passing to the client filter component.
-  const cardData: ResourceCardData[] = all.map(
-    ({ content, ...meta }) => meta,
-  );
+  const cardData: ResourceCardData[] = all.map((r) => {
+    const { content: _body, ...meta } = r;
+    void _body;
+    return meta;
+  });
 
   return (
     <>
