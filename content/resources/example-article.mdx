@@ -1,0 +1,48 @@
+---
+title: "[TEMPLATE] How to Write a Resource Article"
+slug: "example-article"
+type: "article"
+excerpt: "A working template you can copy. Shows how to embed a YouTube video and an inline call-to-action inside an MDX article so every new resource looks consistent."
+date: "2026-06-18"
+author: "John T. Nichols"
+coverImage: "/images/resources/example-article-cover.jpg"
+readingTime: "5 min read"
+status: "published"
+---
+
+This is a published example article. Copy this file, rename it, swap the
+frontmatter and body, and you have a new resource on the hub. Everything below
+demonstrates a feature you can reuse.
+
+## Standard prose
+
+Write normal Markdown. Headings, **bold**, _italics_, lists, and links all
+render with the site's styling. Keep paragraphs tight and skimmable — the same
+plain-language, step-by-step style we use in the courses.
+
+## Embedding a YouTube video
+
+Drop a `YouTube` component anywhere in the body and pass the video's ID (the
+part after `v=` in the URL):
+
+<YouTube id="dQw4w9WgXcQ" title="Sample agile coaching clip" />
+
+The player is responsive and keeps a clean 16:9 frame on every screen size.
+
+## Adding an inline call-to-action
+
+Use the `CTA` component to point readers toward the next step — a course, a
+contact form, anything:
+
+<CTA href="/training" label="Browse SAFe Certification Courses" />
+
+## A quick checklist
+
+When you create a new article, make sure you:
+
+- Set a unique `slug` in the frontmatter
+- Pick the right `type` (article, whitepaper, guide, or video)
+- Write a one-sentence `excerpt` — it shows on the card and in search results
+- Add a `coverImage` if you have one (optional, but it looks better)
+
+That's the whole template. Duplicate, edit, publish.

@@ -11,7 +11,9 @@
   "dependencies": {
     "@formspree/react": "^3.0.0",
     "@supabase/supabase-js": "^2.101.1",
+    "gray-matter": "^4.0.3",
     "next": "14.2.35",
+    "next-mdx-remote": "^6.0.0",
     "posthog-js": "^1.364.7",
     "react": "^18",
     "react-dom": "^18",

@@ -27,6 +27,7 @@ const navItems: NavItem[] = [
       { href: "/why-safe", label: "Why SAFe?" },
     ],
   },
+  { type: "link", href: "/resources", label: "Resources" },
   { type: "link", href: "/about", label: "About" },
   { type: "link", href: "/contact", label: "Contact" },
 ];
