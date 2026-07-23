@@ -27,8 +27,8 @@ interface ScheduleData {
 // --- Helpers ---
 
 function formatDateRange(start: string, end: string): string {
-  const s = new Date(start);
-  const e = new Date(end);
+  const s = new Date(`${start}T12:00:00`);
+  const e = new Date(`${end}T12:00:00`);
   if (s.getFullYear() === e.getFullYear() && s.getMonth() === e.getMonth()) {
     return `${s.toLocaleDateString("en-US", { month: "long", day: "numeric" })}–${e.getDate()}, ${e.getFullYear()}`;
   }
