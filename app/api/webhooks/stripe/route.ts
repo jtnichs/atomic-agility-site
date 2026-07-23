@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { headers } from "next/headers";
 import supabaseAdmin from "@/lib/supabase-admin";
-import { sendRegistrationConfirmation } from "@/lib/email";
+import { sendRegistrationConfirmation, sendAdminPaymentNotification } from "@/lib/email";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
@@ -136,6 +136,24 @@ export async function POST(request: NextRequest) {
         console.log("Confirmation email sent to:", registration.email);
       } catch (emailError) {
         console.error("Email send failed:", emailError);
+        // Don't throw — webhook must still return 200
+      }
+
+      // --- Send admin payment notification (non-blocking) ---
+      try {
+        await sendAdminPaymentNotification({
+          firstName: registration.first_name,
+          lastName: registration.last_name,
+          email: registration.email,
+          courseTitle: courseRaw.title,
+          startDate,
+          endDate,
+          amountPaid: registration.amount_paid_cents / 100,
+          registrationId: registration.id,
+        });
+        console.log("Admin payment notification sent for:", registration.id);
+      } catch (adminEmailError) {
+        console.error("Admin payment notification failed:", adminEmailError);
         // Don't throw — webhook must still return 200
       }
     }

@@ -110,3 +110,45 @@ export async function sendRegistrationConfirmation({
     html,
   });
 }
+
+interface AdminPaymentNotificationParams {
+  firstName: string;
+  lastName: string;
+  email: string;
+  courseTitle: string;
+  startDate: string;
+  endDate: string;
+  amountPaid: number;
+  registrationId: string;
+}
+
+export async function sendAdminPaymentNotification({
+  firstName,
+  lastName,
+  email,
+  courseTitle,
+  startDate,
+  endDate,
+  amountPaid,
+  registrationId,
+}: AdminPaymentNotificationParams) {
+  return resend.emails.send({
+    from: "Atomic Agility <john@atomicagility.us>",
+    to: "john@atomicagility.us",
+    subject: `Payment Received — ${firstName} ${lastName}, $${amountPaid.toFixed(
+      2
+    )} (${courseTitle})`,
+    html: `
+      <p><strong>Payment received and registration confirmed.</strong></p>
+      <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Course:</strong> ${courseTitle}</p>
+      <p><strong>Session Dates:</strong> ${startDate} – ${endDate}</p>
+      <p><strong>Amount Paid:</strong> $${amountPaid.toFixed(2)}</p>
+      <p><strong>Registration ID:</strong> ${registrationId}</p>
+      <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+      <hr />
+      <p><em>Status: Confirmed — payment completed</em></p>
+    `,
+  });
+}
