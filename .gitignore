@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# editor crash artifacts (fuse/gedit) and manual backups
+*.fuse_hidden*
+*.bak
+
+# claude / cowork local session config
+.claude/
